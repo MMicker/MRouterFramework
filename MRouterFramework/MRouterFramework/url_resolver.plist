@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>object_list</key>
+	<array>
+		<dict>
+			<key>class</key>
+			<string>#CommodityListViewController</string>
+			<key>name</key>
+			<string>search_url_solver</string>
+			<key>exact_url</key>
+			<array>
+				<string>k.m.b5m.com/s/search</string>
+				<string>m.b5m.com/s/search</string>
+			</array>
+		</dict>
+		<dict>
+			<key>class</key>
+			<string>#B5MDetailViewController</string>
+			<key>name</key>
+			<string>b5m_detail_url_solver</string>
+			<key>exact_url</key>
+			<array>
+				<string>m.b5m.com/item.html</string>
+				<string>m.b5m.com/main/rebate</string>
+			</array>
+		</dict>
+		<dict>
+			<key>ext</key>
+			<dict>
+				<key>modal</key>
+				<false/>
+				<key>animated</key>
+				<true/>
+			</dict>
+			<key>class</key>
+			<string>#B5MNavigatorDetailViewController</string>
+			<key>name</key>
+			<string>korea_detail_url_solver</string>
+			<key>exact_url</key>
+			<array>
+				<string>m.b5m.com/koreaitem.html</string>
+				<string>k.m.b5m.com/koreaitem.html</string>
+				<string>k.m.b5m.com/main/rebate</string>
+				<string>k.m.b5m.com/item.html</string>
+			</array>
+		</dict>
+	</array>
+</dict>
+</plist>
