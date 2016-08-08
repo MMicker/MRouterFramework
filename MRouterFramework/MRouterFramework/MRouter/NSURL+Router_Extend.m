@@ -1,20 +1,20 @@
 //
-//  NSURL+Extend.m
+//  NSURL+Router_Extend.m
 //  comb5mios
 //
 //  Created by allen.wang on 8/6/12.
 //  Copyright (c) 2012 b5m. All rights reserved.
 //
 
-#import "NSURL+Extend.h"
+#import "NSURL+Router_Extend.h"
 
 #define parameterString             @"&"
 #define parameterComparString       @"="
 
 
-@implementation NSURL(Extend)
+@implementation NSURL(Router_Extend)
 
-- (NSArray *) paramContents
+- (NSArray *) router_paramContents
 {
     NSAssert(self,@"URL is NULL!");
     if (self.query) {
@@ -29,13 +29,13 @@
     return nil;
 }
 
-- (NSString*) valueWithKey:(const NSString *)key
+- (NSString*) router_valueWithKey:(const NSString *)key
 {
     NSAssert(self,@"URL is NULL!");
     NSAssert(key, @"key is NULL!");
     NSAssert([key length],@"key is empty!");
     
-    NSArray *array = [self paramContents];
+    NSArray *array = [self router_paramContents];
     for (int i = 0 ; i < [array count];i++) {
         
         NSString *origal = [array objectAtIndex:i];
@@ -54,8 +54,8 @@
     return nil;
 }
 
-- (NSDictionary *) parametersFromQueryString {
-    NSArray *params = [self paramContents];
+- (NSDictionary *) router_parametersFromQueryString {
+    NSArray *params = [self router_paramContents];
     NSMutableDictionary *paramsDict = [NSMutableDictionary dictionaryWithCapacity:[params count]];
     for (NSString *param in params) {
         NSArray *pairs = [param componentsSeparatedByString:parameterComparString];

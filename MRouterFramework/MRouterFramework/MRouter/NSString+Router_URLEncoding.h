@@ -1,5 +1,5 @@
 //
-//  NSString+URLEncoding.m
+//  NSString+Router_URLEncoding.h
 //
 //  Created by Jon Crosby on 10/19/07.
 //  Copyright 2007 Kaboomerang LLC. All rights reserved.
@@ -23,30 +23,12 @@
 //  THE SOFTWARE.
 
 
-#import "NSString+URLEncoding.h"
+#import <Foundation/Foundation.h>
 
 
-@implementation NSString (OAURLEncodingAdditions)
+@interface NSString (Router_OAURLEncodingAdditions)
 
-- (NSString *)URLEncodedString 
-{
-    NSString *result = (NSString *)CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault,
-                                                                           (CFStringRef)self,
-                                                                           NULL,
-																		   CFSTR("!*'();:@&=+$,/?%#[]"),
-                                                                           kCFStringEncodingUTF8));
-//    [result autorelease];
-	return result;
-}
-
-- (NSString*)URLDecodedString
-{
-	NSString *result = (NSString *)CFBridgingRelease(CFURLCreateStringByReplacingPercentEscapesUsingEncoding(kCFAllocatorDefault,
-																						   (CFStringRef)self,
-																						   CFSTR(""),
-																						   kCFStringEncodingUTF8));
-//    [result autorelease];
-	return result;
-}
+- (NSString *)router_URLEncodedString;
+- (NSString *)router_URLDecodedString;
 
 @end

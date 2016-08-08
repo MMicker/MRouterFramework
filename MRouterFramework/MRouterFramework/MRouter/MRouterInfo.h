@@ -24,19 +24,19 @@ typedef BOOL (^URLRouterHandlerBlock)(MRouterInfo *info, MRouterLink *link);
 @property (nonatomic, assign, readonly) Class       handlerCtrlCls;
 @property (nonatomic, strong, readonly) URLRouterHandlerBlock block;
 
-+ (instancetype) resolver:(NSString *) name
-                    index:(NSInteger) index
-                  ctrlCls:(Class ) ctrlCls
-                regexUrls:(NSArray *) regexUrls
-               extentions:(NSDictionary *) extentions
-              handleBlock:(URLRouterHandlerBlock) block;
++ (instancetype)    router:(NSString *) name
+                     index:(NSInteger) index
+                   ctrlCls:(Class ) ctrlCls
+                 regexUrls:(NSArray *) regexUrls
+                extentions:(NSDictionary *) extentions
+               handleBlock:(URLRouterHandlerBlock) block;
 
-+ (instancetype) resolver:(NSString *) name
-                    index:(NSInteger) index
-                  ctrlCls:(Class ) ctrlCls
-                regexUrls:(NSArray *) regexUrls
-               extentions:(NSDictionary *) extentions
-               handlerCls:(Class) handleCls;
++ (instancetype)    router:(NSString *) name
+                     index:(NSInteger) index
+                   ctrlCls:(Class ) ctrlCls
+                 regexUrls:(NSArray *) regexUrls
+                extentions:(NSDictionary *) extentions
+                handlerCls:(Class) handleCls;
 
 
 @end

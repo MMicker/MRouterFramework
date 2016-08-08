@@ -28,10 +28,10 @@
 		62348D111D54540F00B88910 /* MRouterMatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 62348D0F1D54540F00B88910 /* MRouterMatcher.m */; };
 		62348D141D54543200B88910 /* MRouterRegularExpression.h in Headers */ = {isa = PBXBuildFile; fileRef = 62348D121D54543200B88910 /* MRouterRegularExpression.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		62348D151D54543200B88910 /* MRouterRegularExpression.m in Sources */ = {isa = PBXBuildFile; fileRef = 62348D131D54543200B88910 /* MRouterRegularExpression.m */; };
-		62348D1A1D5459A900B88910 /* NSString+URLEncoding.h in Headers */ = {isa = PBXBuildFile; fileRef = 62348D161D5459A900B88910 /* NSString+URLEncoding.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		62348D1B1D5459A900B88910 /* NSString+URLEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 62348D171D5459A900B88910 /* NSString+URLEncoding.m */; };
-		62348D1C1D5459A900B88910 /* NSURL+Extend.h in Headers */ = {isa = PBXBuildFile; fileRef = 62348D181D5459A900B88910 /* NSURL+Extend.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		62348D1D1D5459A900B88910 /* NSURL+Extend.m in Sources */ = {isa = PBXBuildFile; fileRef = 62348D191D5459A900B88910 /* NSURL+Extend.m */; };
+		62348D1A1D5459A900B88910 /* NSString+Router_URLEncoding.h in Headers */ = {isa = PBXBuildFile; fileRef = 62348D161D5459A900B88910 /* NSString+Router_URLEncoding.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		62348D1B1D5459A900B88910 /* NSString+Router_URLEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 62348D171D5459A900B88910 /* NSString+Router_URLEncoding.m */; };
+		62348D1C1D5459A900B88910 /* NSURL+Router_Extend.h in Headers */ = {isa = PBXBuildFile; fileRef = 62348D181D5459A900B88910 /* NSURL+Router_Extend.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		62348D1D1D5459A900B88910 /* NSURL+Router_Extend.m in Sources */ = {isa = PBXBuildFile; fileRef = 62348D191D5459A900B88910 /* NSURL+Router_Extend.m */; };
 		62348D201D545A9400B88910 /* MRouterLink.h in Headers */ = {isa = PBXBuildFile; fileRef = 62348D1E1D545A9400B88910 /* MRouterLink.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		62348D211D545A9400B88910 /* MRouterLink.m in Sources */ = {isa = PBXBuildFile; fileRef = 62348D1F1D545A9400B88910 /* MRouterLink.m */; };
 		62348D241D54612900B88910 /* MRouter.h in Headers */ = {isa = PBXBuildFile; fileRef = 62348D221D54612900B88910 /* MRouter.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -58,10 +58,10 @@
 		62348D0F1D54540F00B88910 /* MRouterMatcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRouterMatcher.m; sourceTree = "<group>"; };
 		62348D121D54543200B88910 /* MRouterRegularExpression.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRouterRegularExpression.h; sourceTree = "<group>"; };
 		62348D131D54543200B88910 /* MRouterRegularExpression.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRouterRegularExpression.m; sourceTree = "<group>"; };
-		62348D161D5459A900B88910 /* NSString+URLEncoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+URLEncoding.h"; sourceTree = "<group>"; };
-		62348D171D5459A900B88910 /* NSString+URLEncoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+URLEncoding.m"; sourceTree = "<group>"; };
-		62348D181D5459A900B88910 /* NSURL+Extend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURL+Extend.h"; sourceTree = "<group>"; };
-		62348D191D5459A900B88910 /* NSURL+Extend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURL+Extend.m"; sourceTree = "<group>"; };
+		62348D161D5459A900B88910 /* NSString+Router_URLEncoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Router_URLEncoding.h"; sourceTree = "<group>"; };
+		62348D171D5459A900B88910 /* NSString+Router_URLEncoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Router_URLEncoding.m"; sourceTree = "<group>"; };
+		62348D181D5459A900B88910 /* NSURL+Router_Extend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURL+Router_Extend.h"; sourceTree = "<group>"; };
+		62348D191D5459A900B88910 /* NSURL+Router_Extend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURL+Router_Extend.m"; sourceTree = "<group>"; };
 		62348D1E1D545A9400B88910 /* MRouterLink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRouterLink.h; sourceTree = "<group>"; };
 		62348D1F1D545A9400B88910 /* MRouterLink.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRouterLink.m; sourceTree = "<group>"; };
 		62348D221D54612900B88910 /* MRouter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRouter.h; sourceTree = "<group>"; };
@@ -151,10 +151,10 @@
 		62348D371D54A0FF00B88910 /* Category */ = {
 			isa = PBXGroup;
 			children = (
-				62348D181D5459A900B88910 /* NSURL+Extend.h */,
-				62348D191D5459A900B88910 /* NSURL+Extend.m */,
-				62348D161D5459A900B88910 /* NSString+URLEncoding.h */,
-				62348D171D5459A900B88910 /* NSString+URLEncoding.m */,
+				62348D181D5459A900B88910 /* NSURL+Router_Extend.h */,
+				62348D191D5459A900B88910 /* NSURL+Router_Extend.m */,
+				62348D161D5459A900B88910 /* NSString+Router_URLEncoding.h */,
+				62348D171D5459A900B88910 /* NSString+Router_URLEncoding.m */,
 			);
 			name = Category;
 			sourceTree = "<group>";
@@ -175,7 +175,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				62348D1A1D5459A900B88910 /* NSString+URLEncoding.h in Headers */,
+				62348D1A1D5459A900B88910 /* NSString+Router_URLEncoding.h in Headers */,
 				62348D4D1D54AC3500B88910 /* UIViewController+RouterLink.h in Headers */,
 				62348D301D54655000B88910 /* MRouterDefaultHandler.h in Headers */,
 				62348D141D54543200B88910 /* MRouterRegularExpression.h in Headers */,
@@ -188,7 +188,7 @@
 				62348D241D54612900B88910 /* MRouter.h in Headers */,
 				6217DE2A1D51B7C40059451A /* MRouterFramework.h in Headers */,
 				62348D351D5494D000B88910 /* MRouterInfo+Router.h in Headers */,
-				62348D1C1D5459A900B88910 /* NSURL+Extend.h in Headers */,
+				62348D1C1D5459A900B88910 /* NSURL+Router_Extend.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -280,13 +280,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				62348D211D545A9400B88910 /* MRouterLink.m in Sources */,
-				62348D1D1D5459A900B88910 /* NSURL+Extend.m in Sources */,
+				62348D1D1D5459A900B88910 /* NSURL+Router_Extend.m in Sources */,
 				62348D251D54612900B88910 /* MRouter.m in Sources */,
 				62348D361D5494D000B88910 /* MRouterInfo+Router.m in Sources */,
 				62348D311D54655000B88910 /* MRouterDefaultHandler.m in Sources */,
 				62348D0D1D5453FB00B88910 /* MRouterInfo.m in Sources */,
 				62348D151D54543200B88910 /* MRouterRegularExpression.m in Sources */,
-				62348D1B1D5459A900B88910 /* NSString+URLEncoding.m in Sources */,
+				62348D1B1D5459A900B88910 /* NSString+Router_URLEncoding.m in Sources */,
 				62348D4E1D54AC3500B88910 /* UIViewController+RouterLink.m in Sources */,
 				62348D111D54540F00B88910 /* MRouterMatcher.m in Sources */,
 				62FA80C21D58217A00A753C6 /* MRouterInfo+DefaultHandler.m in Sources */,

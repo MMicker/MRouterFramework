@@ -37,29 +37,46 @@
         self.handlerCtrlCls = ctrlCls;
         self.index = index;
         self.extentions = extentions;
-        [self setValue:((handleCls) ? handleCls : NSClassFromString(@"MRouterDefaultHandler")) forKey:@"handleCls"];
+        [self setValue:((handleCls) ?
+                        handleCls :  NSClassFromString(@"MRouterDefaultHandler")) forKey:@"handleCls"];
     }
     return self;
 }
 
-+ (instancetype) resolver:(NSString *) name
-                    index:(NSInteger) index
-                  ctrlCls:(Class ) ctrlCls
-                regexUrls:(NSArray *) regexUrls
-               extentions:(NSDictionary *) extentions
-              handleBlock:(URLRouterHandlerBlock) block {
++ (instancetype)    router:(NSString *) name
+                     index:(NSInteger) index
+                   ctrlCls:(Class ) ctrlCls
+                 regexUrls:(NSArray *) regexUrls
+                extentions:(NSDictionary *) extentions
+               handleBlock:(URLRouterHandlerBlock) block {
     
-    return [[self alloc] initWithName:name index:index ctrlCls:ctrlCls regexUrls:regexUrls extentions:extentions block:block handleCls:nil];
+    return [[self alloc] initWithName:name
+                                index:index
+                              ctrlCls:ctrlCls
+                            regexUrls:regexUrls
+                           extentions:extentions
+                                block:block
+                            handleCls:nil];
 }
 
-+ (instancetype) resolver:(NSString *) name
-                    index:(NSInteger) index
-                  ctrlCls:(Class ) ctrlCls
-                regexUrls:(NSArray *) regexUrls
-               extentions:(NSDictionary *) extentions
-               handlerCls:(Class) handleCls {
++ (instancetype)    router:(NSString *) name
+                     index:(NSInteger) index
+                   ctrlCls:(Class ) ctrlCls
+                 regexUrls:(NSArray *) regexUrls
+                extentions:(NSDictionary *) extentions
+                handlerCls:(Class) handleCls {
     
-    return [[self alloc] initWithName:name index:index ctrlCls:ctrlCls  regexUrls:regexUrls  extentions:extentions block:nil handleCls:handleCls];
+    return [[self alloc] initWithName:name
+                                index:index
+                              ctrlCls:ctrlCls
+                            regexUrls:regexUrls
+                           extentions:extentions
+                                block:nil
+                            handleCls:handleCls];
+}
+
+- (NSString *) description {
+    return [self debugDescription];
 }
 
 - (NSString *) debugDescription {

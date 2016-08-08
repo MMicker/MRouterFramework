@@ -1,5 +1,5 @@
 //
-//  NSURL+Extend.h
+//  NSURL+Router_Extend.h
 //  comb5mios
 //
 //  Created by allen.wang on 8/6/12.
@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface NSURL(Extend)
+@interface NSURL(Router_Extend)
 
 /**
  * @brief get query parameters array
@@ -16,7 +16,7 @@
  * @return              NSArray *
  * @note                NULL: If no parameters
  */
-- (NSArray *) paramContents;
+- (NSArray *) router_paramContents;
     
 /**
  * @brief get the value of the give parameter key
@@ -26,9 +26,9 @@
  * @return             NSString *
  * @note               @"": If did not contain such value
  */
-- (NSString*) valueWithKey:(const NSString *)key;
+- (NSString*) router_valueWithKey:(const NSString *)key;
 
 
-- (NSDictionary *) parametersFromQueryString;
+- (NSDictionary *) router_parametersFromQueryString;
 
 @end

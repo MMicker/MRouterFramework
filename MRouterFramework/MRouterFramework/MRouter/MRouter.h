@@ -16,7 +16,7 @@
 
 /**
  *  启动注册
- *  备注：此处会通过反射调用URLRouterService的Category中的，以registerResolver_开头的方法；
+ *  备注：此处会通过反射调用URLRouterService的Category中的，以registerRouter_开头的方法；
  *       可以通过编写对应的Category来进行加载
  *
  *  @return self

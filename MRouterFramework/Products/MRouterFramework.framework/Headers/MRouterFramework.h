@@ -28,6 +28,6 @@ FOUNDATION_EXPORT const unsigned char MRouterFrameworkVersionString[];
 #import "UIViewController+RouterLink.h"
 #import "IRouterLink.h"
 #import "IURLResolver.h"
-#import "NSURL+Extend.h"
-#import "NSString+URLEncoding.h"
+#import "NSURL+Router_Extend.h"
+#import "NSString+Router_URLEncoding.h"
 

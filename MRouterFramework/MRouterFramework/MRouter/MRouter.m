@@ -55,7 +55,7 @@ static BOOL G_URL_RESOLVER_DEBUG = NO;
         Method method = methods[i];
         SEL selector = method_getName(method);
         NSString *name = NSStringFromSelector(selector);
-        if ([name hasPrefix:@"registerResolver_"]) {
+        if ([name hasPrefix:@"registerRouter_"]) {
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
             [self performSelector:selector withObject:nil];
@@ -118,12 +118,12 @@ static BOOL G_URL_RESOLVER_DEBUG = NO;
             resolverName = @"MRouterDefaultHandler";
             controlName = [controlName substringFromIndex:1];
         }
-        [self registerURLRouter:[MRouterInfo resolver:objectName
-                                                      index:index
-                                                    ctrlCls:NSClassFromString(controlName)?:NULL
-                                                  regexUrls:regexes
-                                                 extentions:extentions
-                                                 handlerCls:NSClassFromString(resolverName)?:NULL]];
+        [self registerURLRouter:[MRouterInfo    router:objectName
+                                                 index:index
+                                               ctrlCls:NSClassFromString(controlName)?:NULL
+                                             regexUrls:regexes
+                                            extentions:extentions
+                                            handlerCls:NSClassFromString(resolverName)?:NULL]];
     }];
 }
 

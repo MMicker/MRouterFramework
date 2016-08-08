@@ -1,5 +1,5 @@
 //
-//  NSString+URLEncoding.h
+//  NSString+Router_URLEncoding.h
 //
 //  Created by Jon Crosby on 10/19/07.
 //  Copyright 2007 Kaboomerang LLC. All rights reserved.
@@ -26,9 +26,9 @@
 #import <Foundation/Foundation.h>
 
 
-@interface NSString (OAURLEncodingAdditions)
+@interface NSString (Router_OAURLEncodingAdditions)
 
-- (NSString *)URLEncodedString;
-- (NSString *)URLDecodedString;
+- (NSString *)router_URLEncodedString;
+- (NSString *)router_URLDecodedString;
 
 @end

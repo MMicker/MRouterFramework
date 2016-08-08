@@ -7,7 +7,7 @@
 //
 
 #import "MRouterLink.h"
-#import "NSURL+Extend.h"
+#import "NSURL+Router_Extend.h"
 
 NSString * const MRouterCallbackURLKey = @"m_callback_url";
 
@@ -19,7 +19,7 @@ NSString * const MRouterCallbackURLKey = @"m_callback_url";
     self = [super init];
     if (self) {
         _URL  = url;
-        _queryParameters = [_URL parametersFromQueryString];
+        _queryParameters = [_URL router_parametersFromQueryString];
     }
     return self;
 }
