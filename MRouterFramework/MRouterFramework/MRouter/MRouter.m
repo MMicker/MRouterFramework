@@ -170,6 +170,10 @@ static BOOL G_URL_RESOLVER_DEBUG = NO;
     return link?YES:NO;
 }
 
+- (NSString *) description {
+    return [self debugDescription];
+}
+
 - (NSString *) debugDescription {
     NSMutableString *result = [NSMutableString string];
     [self.resolvers enumerateObjectsUsingBlock:^(MRouterInfo *infoTmp, NSUInteger idx, BOOL * _Nonnull stop) {
