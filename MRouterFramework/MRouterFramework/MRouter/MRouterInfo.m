@@ -80,7 +80,7 @@
 }
 
 - (NSString *) debugDescription {
-    return [NSString stringWithFormat:@"名称：%@, 索引：%@, URL: %@;", self.name, @(self.index), self.regexUrls];
+    return [NSString stringWithFormat:@"name：%@, index：%@, url: %@;", self.name, @(self.index), self.regexUrls];
 }
 
 @end

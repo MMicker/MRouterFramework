@@ -91,7 +91,7 @@ static BOOL G_URL_RESOLVER_DEBUG = NO;
         }
         
         if (G_URL_RESOLVER_DEBUG) {
-            NSLog(@"正在注册路由[%2lu]:%@",(unsigned long)_index++, info.name);
+            NSLog(@"正在注册路由 [%2lu]:%@",(unsigned long)_index++, info.name);
         }
     }
 }
@@ -165,7 +165,7 @@ static BOOL G_URL_RESOLVER_DEBUG = NO;
         *stop = link?YES:NO;
     }];
     if (link && G_URL_RESOLVER_DEBUG) {
-        NSLog(@"匹配URL:%@ 名称:%@ 用户信息:%@", url, routerInfo.name, userInfo);
+        NSLog(@"Match the router with url :%@ || %@", url, routerInfo);
     }
     return link?YES:NO;
 }
@@ -177,7 +177,7 @@ static BOOL G_URL_RESOLVER_DEBUG = NO;
 - (NSString *) debugDescription {
     NSMutableString *result = [NSMutableString string];
     [self.resolvers enumerateObjectsUsingBlock:^(MRouterInfo *infoTmp, NSUInteger idx, BOOL * _Nonnull stop) {
-        [result appendFormat:@"%@\n", [infoTmp debugDescription]];
+        [result appendFormat:@"\n%@", infoTmp];
     }];
     return result;
 }
