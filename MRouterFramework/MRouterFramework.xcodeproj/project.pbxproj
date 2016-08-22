@@ -50,6 +50,8 @@
 		6284631D1D5C63B1004840EB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6284631B1D5C63B1004840EB /* LaunchScreen.storyboard */; };
 		628463221D5C63BD004840EB /* MRouterFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6217DE261D51B7C40059451A /* MRouterFramework.framework */; };
 		628463231D5C640A004840EB /* url_resolver.plist in Resources */ = {isa = PBXBuildFile; fileRef = 62FA80C81D58269A00A753C6 /* url_resolver.plist */; };
+		62B064B01D6ADF14004A0DF0 /* MRouterLink+UserInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 62B064AE1D6ADF14004A0DF0 /* MRouterLink+UserInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		62B064B11D6ADF14004A0DF0 /* MRouterLink+UserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 62B064AF1D6ADF14004A0DF0 /* MRouterLink+UserInfo.m */; };
 		62FA80C11D58217A00A753C6 /* MRouterInfo+DefaultHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = 62FA80BF1D58217A00A753C6 /* MRouterInfo+DefaultHandler.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		62FA80C21D58217A00A753C6 /* MRouterInfo+DefaultHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 62FA80C01D58217A00A753C6 /* MRouterInfo+DefaultHandler.m */; };
 		62FA80D01D582A9F00A753C6 /* IURLResolver.h in Headers */ = {isa = PBXBuildFile; fileRef = 62348D321D54671900B88910 /* IURLResolver.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -94,6 +96,8 @@
 		628463191D5C63B1004840EB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6284631C1D5C63B1004840EB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6284631E1D5C63B1004840EB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		62B064AE1D6ADF14004A0DF0 /* MRouterLink+UserInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MRouterLink+UserInfo.h"; sourceTree = "<group>"; };
+		62B064AF1D6ADF14004A0DF0 /* MRouterLink+UserInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MRouterLink+UserInfo.m"; sourceTree = "<group>"; };
 		62FA80BF1D58217A00A753C6 /* MRouterInfo+DefaultHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MRouterInfo+DefaultHandler.h"; sourceTree = "<group>"; };
 		62FA80C01D58217A00A753C6 /* MRouterInfo+DefaultHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MRouterInfo+DefaultHandler.m"; sourceTree = "<group>"; };
 		62FA80C81D58269A00A753C6 /* url_resolver.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = url_resolver.plist; sourceTree = "<group>"; };
@@ -154,8 +158,6 @@
 				62348D371D54A0FF00B88910 /* Category */,
 				62348D0A1D5453FB00B88910 /* MRouterInfo.h */,
 				62348D0B1D5453FB00B88910 /* MRouterInfo.m */,
-				62FA80BF1D58217A00A753C6 /* MRouterInfo+DefaultHandler.h */,
-				62FA80C01D58217A00A753C6 /* MRouterInfo+DefaultHandler.m */,
 				62348D331D5494D000B88910 /* MRouterInfo+Router.h */,
 				62348D341D5494D000B88910 /* MRouterInfo+Router.m */,
 				62348D0E1D54540F00B88910 /* MRouterMatcher.h */,
@@ -164,8 +166,12 @@
 				62348D131D54543200B88910 /* MRouterRegularExpression.m */,
 				62348D1E1D545A9400B88910 /* MRouterLink.h */,
 				62348D1F1D545A9400B88910 /* MRouterLink.m */,
+				62B064AE1D6ADF14004A0DF0 /* MRouterLink+UserInfo.h */,
+				62B064AF1D6ADF14004A0DF0 /* MRouterLink+UserInfo.m */,
 				62348D221D54612900B88910 /* MRouter.h */,
 				62348D231D54612900B88910 /* MRouter.m */,
+				62FA80BF1D58217A00A753C6 /* MRouterInfo+DefaultHandler.h */,
+				62FA80C01D58217A00A753C6 /* MRouterInfo+DefaultHandler.m */,
 				62348D2E1D54655000B88910 /* MRouterDefaultHandler.h */,
 				62348D2F1D54655000B88910 /* MRouterDefaultHandler.m */,
 				62348D321D54671900B88910 /* IURLResolver.h */,
@@ -235,6 +241,7 @@
 				62348D101D54540F00B88910 /* MRouterMatcher.h in Headers */,
 				62FA80C11D58217A00A753C6 /* MRouterInfo+DefaultHandler.h in Headers */,
 				62FA80D11D582AA500A753C6 /* IRouterLink.h in Headers */,
+				62B064B01D6ADF14004A0DF0 /* MRouterLink+UserInfo.h in Headers */,
 				62348D201D545A9400B88910 /* MRouterLink.h in Headers */,
 				62348D0C1D5453FB00B88910 /* MRouterInfo.h in Headers */,
 				62348D241D54612900B88910 /* MRouter.h in Headers */,
@@ -367,6 +374,7 @@
 				62348D211D545A9400B88910 /* MRouterLink.m in Sources */,
 				62348D1D1D5459A900B88910 /* NSURL+Router_Extend.m in Sources */,
 				62348D251D54612900B88910 /* MRouter.m in Sources */,
+				62B064B11D6ADF14004A0DF0 /* MRouterLink+UserInfo.m in Sources */,
 				62348D361D5494D000B88910 /* MRouterInfo+Router.m in Sources */,
 				62348D311D54655000B88910 /* MRouterDefaultHandler.m in Sources */,
 				62348D0D1D5453FB00B88910 /* MRouterInfo.m in Sources */,
@@ -600,6 +608,7 @@
 				628463201D5C63B1004840EB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		62FA80C41D58255F00A753C6 /* Build configuration list for PBXAggregateTarget "RouterAggregate" */ = {
 			isa = XCConfigurationList;

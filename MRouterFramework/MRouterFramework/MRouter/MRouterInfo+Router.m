@@ -10,6 +10,8 @@
 #import "MRouterLink.h"
 #import "MRouterMatcher.h"
 #import "IURLResolver.h"
+#import "MRouterLink+UserInfo.h"
+
 
 @implementation MRouterInfo (Router)
 
@@ -24,6 +26,7 @@
     }];
     
     if (link) {
+        link.userInfo = userInfo;
         if (self.block) {
             self.block(self, link);
         } else {

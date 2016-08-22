@@ -25,6 +25,7 @@ FOUNDATION_EXPORT const unsigned char MRouterFrameworkVersionString[];
 #import "MRouterLink.h"
 #import "MRouter.h"
 #import "MRouterDefaultHandler.h"
+#import "MRouterLink+UserInfo.h"
 #import "UIViewController+RouterLink.h"
 #import "IRouterLink.h"
 #import "IURLResolver.h"

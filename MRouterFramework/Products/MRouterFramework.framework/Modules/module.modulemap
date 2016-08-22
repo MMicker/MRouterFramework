@@ -1,0 +1,6 @@
+framework module MRouterFramework {
+  umbrella header "MRouterFramework.h"
+
+  export *
+  module * { export * }
+}
