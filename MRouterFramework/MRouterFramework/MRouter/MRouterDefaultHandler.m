@@ -16,7 +16,7 @@
 @implementation MRouterDefaultHandler
 
 - (UIViewController *) rootViewController:(MRouterLink *) link {
-    return [UIApplication sharedApplication].keyWindow.rootViewController;
+    return [[UIApplication sharedApplication].keyWindow.rootViewController presentedViewController];
 }
 
 #pragma IURLResolver
