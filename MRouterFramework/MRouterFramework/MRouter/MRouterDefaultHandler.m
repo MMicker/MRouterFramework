@@ -16,7 +16,8 @@
 @implementation MRouterDefaultHandler
 
 - (UIViewController *) rootViewController:(MRouterLink *) link {
-    return [[UIApplication sharedApplication].keyWindow.rootViewController presentedViewController];
+    UIViewController *controller = [UIApplication sharedApplication].keyWindow.rootViewController;
+    return [controller presentedViewController]?: controller;
 }
 
 #pragma IURLResolver
@@ -31,7 +32,8 @@
         
         if ([info modalPresent]) {
             
-            navigation = [[UINavigationController alloc] initWithRootViewController:targetViewController];
+            Class bgNavigation = NSClassFromString(@"BGNavigationController")?:([UINavigationController class]);
+            navigation = [[bgNavigation alloc] initWithRootViewController:targetViewController];
             [controller presentViewController:navigation animated:[info animated] completion:nil];
 
         }
