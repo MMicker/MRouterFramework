@@ -31,6 +31,14 @@
     return NO;
 }
 
+
+- (BOOL) defaultRouterValue {
+    if (self.extentions && [[self.extentions allKeys] containsObject:@"default"]) {
+        return [[self.extentions objectForKey:@"default"] boolValue];;
+    }
+    return NO;
+}
+
 - (UIViewController *) targetController {
     return [[[self handlerCtrlCls] alloc] init];
 }

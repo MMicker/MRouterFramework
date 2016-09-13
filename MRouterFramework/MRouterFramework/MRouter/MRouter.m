@@ -11,12 +11,14 @@
 #import <objc/runtime.h>
 #import "MRouterInfo.h"
 #import "MRouterInfo+Router.h"
+#import "MRouterInfo+DefaultHandler.h"
 
 static BOOL G_URL_RESOLVER_DEBUG = NO;
 
 @interface MRouter()
 
 @property (nonatomic, strong) NSMutableArray *resolvers;
+@property (nonatomic, strong) MRouterInfo    *defaultRouter;
 
 @end
 
@@ -89,7 +91,9 @@ static BOOL G_URL_RESOLVER_DEBUG = NO;
         } else {
             [self.resolvers addObject:info];
         }
-        
+        if(info.isDefault) {
+            self.defaultRouter = info;
+        }
         if (G_URL_RESOLVER_DEBUG) {
             NSLog(@"正在注册路由 [%2lu]:%@",(unsigned long)_index++, info.name);
         }
@@ -118,12 +122,14 @@ static BOOL G_URL_RESOLVER_DEBUG = NO;
             resolverName = @"MRouterDefaultHandler";
             controlName = [controlName substringFromIndex:1];
         }
-        [self registerURLRouter:[MRouterInfo    router:objectName
-                                                 index:index
-                                               ctrlCls:NSClassFromString(controlName)?:NULL
-                                             regexUrls:regexes
-                                            extentions:extentions
-                                            handlerCls:NSClassFromString(resolverName)?:NULL]];
+        MRouterInfo *info = [MRouterInfo    router:objectName
+                                             index:index
+                                           ctrlCls:NSClassFromString(controlName)?:NULL
+                                         regexUrls:regexes
+                                        extentions:extentions
+                                        handlerCls:NSClassFromString(resolverName)?:NULL];
+        info.defaultRouter = [info defaultRouterValue];;
+        [self registerURLRouter:info];
     }];
 }
 
@@ -156,7 +162,7 @@ static BOOL G_URL_RESOLVER_DEBUG = NO;
     }
 }
 
-- (BOOL) handleURL:(NSURL *) url userInfo:(id) userInfo {
+- (BOOL) handleURL:(NSURL *) url userInfo:(id) userInfo useDefault:(BOOL) flag {
     __block MRouterLink *link = nil;
     __block MRouterInfo *routerInfo = nil;
     [self.resolvers enumerateObjectsUsingBlock:^(MRouterInfo *infoTmp , NSUInteger idx, BOOL * _Nonnull stop) {
@@ -164,10 +170,21 @@ static BOOL G_URL_RESOLVER_DEBUG = NO;
         routerInfo = infoTmp;
         *stop = link?YES:NO;
     }];
+    
+    //处理默认请求
+    if (!link && flag && self.defaultRouter) {
+        routerInfo = self.defaultRouter;
+        link = [routerInfo handleURL:url userInfo:userInfo];
+    }
+    
     if (link && G_URL_RESOLVER_DEBUG) {
         NSLog(@"Match the router with url :%@ || %@", url, routerInfo);
     }
     return link?YES:NO;
+}
+
+- (BOOL) handleURL:(NSURL *) url userInfo:(id) userInfo {
+    return [self handleURL:url userInfo:userInfo useDefault:YES];
 }
 
 - (NSString *) description {

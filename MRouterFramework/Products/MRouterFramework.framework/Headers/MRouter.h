@@ -73,11 +73,14 @@
  *  处理回调信息
  *
  *  @param url        待处理的URL
+ *  @param userInfo   用户信息传递
+ *  @param flag       是否使用默认路由进行处理, 默认为YES
  *  @param controller 调用者
  *
  *  @return 是否能够正常处理
  */
 - (BOOL) handleURL:(NSURL *) url userInfo:(id) userInfo;
+- (BOOL) handleURL:(NSURL *) url userInfo:(id) userInfo useDefault:(BOOL) flag;
 
 //- (BOOL) handleURL:(NSURL *) url;
 

@@ -16,6 +16,8 @@
 
 - (BOOL) singleInstance;
 
+- (BOOL) defaultRouterValue;
+
 - (UIViewController *) targetController;
 
 @end

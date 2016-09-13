@@ -11,7 +11,9 @@
 #import "MRouterMatcher.h"
 #import "IURLResolver.h"
 #import "MRouterLink+UserInfo.h"
+#import <objc/runtime.h>
 
+char * defaultRouter;
 
 @implementation MRouterInfo (Router)
 
@@ -35,5 +37,14 @@
         }
     }
     return link;
+}
+
+- (BOOL) isDefault {
+    NSNumber *number = objc_getAssociatedObject(self, &defaultRouter);
+    return [number boolValue];
+}
+
+- (void) setDefaultRouter:(BOOL)defaultRouter {
+    objc_setAssociatedObject(self, &defaultRouter, @(defaultRouter), OBJC_ASSOCIATION_RETAIN);
 }
 @end
