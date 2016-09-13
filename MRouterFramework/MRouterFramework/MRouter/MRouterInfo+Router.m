@@ -13,7 +13,7 @@
 #import "MRouterLink+UserInfo.h"
 #import <objc/runtime.h>
 
-char * defaultRouter;
+static char objc_default_router;
 
 @implementation MRouterInfo (Router)
 
@@ -44,11 +44,11 @@ char * defaultRouter;
 }
 
 - (BOOL) isDefault {
-    NSNumber *number = objc_getAssociatedObject(self, &defaultRouter);
+    NSNumber *number = objc_getAssociatedObject(self, &objc_default_router);
     return [number boolValue];
 }
 
 - (void) setDefaultRouter:(BOOL)defaultRouter {
-    objc_setAssociatedObject(self, &defaultRouter, @(defaultRouter), OBJC_ASSOCIATION_RETAIN);
+    objc_setAssociatedObject(self, &objc_default_router, @(defaultRouter), OBJC_ASSOCIATION_RETAIN);
 }
 @end
