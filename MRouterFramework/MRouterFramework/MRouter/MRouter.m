@@ -166,7 +166,7 @@ static BOOL G_URL_RESOLVER_DEBUG = NO;
     __block MRouterLink *link = nil;
     __block MRouterInfo *routerInfo = nil;
     [self.resolvers enumerateObjectsUsingBlock:^(MRouterInfo *infoTmp , NSUInteger idx, BOOL * _Nonnull stop) {
-        link = [infoTmp handleURL:url userInfo:userInfo];
+        link = [infoTmp handleURL:url userInfo:userInfo direct:NO];
         routerInfo = infoTmp;
         *stop = link?YES:NO;
     }];
@@ -174,7 +174,7 @@ static BOOL G_URL_RESOLVER_DEBUG = NO;
     //处理默认请求
     if (!link && flag && self.defaultRouter) {
         routerInfo = self.defaultRouter;
-        link = [routerInfo handleURL:url userInfo:userInfo];
+        link = [routerInfo handleURL:url userInfo:userInfo direct:YES];
     }
     
     if (link && G_URL_RESOLVER_DEBUG) {

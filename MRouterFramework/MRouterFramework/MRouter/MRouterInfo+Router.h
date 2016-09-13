@@ -12,6 +12,6 @@
 
 @property (nonatomic, assign, getter=isDefault) BOOL defaultRouter;
 
-- (MRouterLink *) handleURL:(NSURL *) url userInfo:(id) userInfo;
+- (MRouterLink *) handleURL:(NSURL *) url userInfo:(id) userInfo direct:(BOOL) direct;
 
 @end

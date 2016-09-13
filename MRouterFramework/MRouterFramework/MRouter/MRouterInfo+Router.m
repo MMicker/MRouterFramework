@@ -17,15 +17,19 @@ char * defaultRouter;
 
 @implementation MRouterInfo (Router)
 
-- (MRouterLink *) handleURL:(NSURL *) url userInfo:(id) userInfo {
+- (MRouterLink *) handleURL:(NSURL *) url userInfo:(id) userInfo direct:(BOOL) direct{
     __block MRouterLink *link = nil;
-    [self.regexUrls enumerateObjectsUsingBlock:^(NSString * obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        MRouterMatcher *matcher = [MRouterMatcher matcherWithRoute:obj];
-        link = [matcher deepLinkWithURL:url];
-        if (link) {
-            *stop = YES;
-        }
-    }];
+    if (direct) {
+        link  = [[MRouterLink alloc] initWithURL:url];
+    } else {
+        [self.regexUrls enumerateObjectsUsingBlock:^(NSString * obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            MRouterMatcher *matcher = [MRouterMatcher matcherWithRoute:obj];
+            link = [matcher deepLinkWithURL:url];
+            if (link) {
+                *stop = YES;
+            }
+        }];
+    }
     
     if (link) {
         link.userInfo = userInfo;
