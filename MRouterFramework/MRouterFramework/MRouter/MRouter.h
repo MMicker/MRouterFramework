@@ -10,7 +10,10 @@
 @class MRouterInfo;
 @class UIViewController;
 
+typedef NSURL * (^handleURLBlock)(NSURL *originURL);
+
 @interface MRouter : NSObject
+@property (nonatomic, copy) handleURLBlock routerHandler;
 
 + (instancetype) sharedRouter;
 

@@ -165,8 +165,9 @@ static BOOL G_URL_RESOLVER_DEBUG = NO;
 - (BOOL) handleURL:(NSURL *) url userInfo:(id) userInfo useDefault:(BOOL) flag {
     __block MRouterLink *link = nil;
     __block MRouterInfo *routerInfo = nil;
+    NSURL *resultURL = self.routerHandler ? self.routerHandler(url) : url;
     [self.resolvers enumerateObjectsUsingBlock:^(MRouterInfo *infoTmp , NSUInteger idx, BOOL * _Nonnull stop) {
-        link = [infoTmp handleURL:url userInfo:userInfo direct:NO];
+        link = [infoTmp handleURL:resultURL userInfo:userInfo direct:NO];
         routerInfo = infoTmp;
         *stop = link?YES:NO;
     }];
@@ -174,11 +175,11 @@ static BOOL G_URL_RESOLVER_DEBUG = NO;
     //处理默认请求
     if (!link && flag && self.defaultRouter) {
         routerInfo = self.defaultRouter;
-        link = [routerInfo handleURL:url userInfo:userInfo direct:YES];
+        link = [routerInfo handleURL:resultURL userInfo:userInfo direct:YES];
     }
     
     if (link && G_URL_RESOLVER_DEBUG) {
-        NSLog(@"Match the router with url :%@ || %@", url, routerInfo);
+        NSLog(@"Match the router with origin url :%@ || %@", url, routerInfo);
     }
     return link?YES:NO;
 }
