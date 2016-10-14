@@ -44,6 +44,10 @@
     
     MRouterLink *deepLink       = [[MRouterLink alloc] initWithURL:url];
     NSString *deepLinkString    = [NSString stringWithFormat:@"%@%@", deepLink.URL.host, deepLink.URL.path];
+    if ([deepLink.URL.query length] > 0) {
+        //用于匹配带有参数的url, 在此对？进行转义成/
+        deepLinkString    = [NSString stringWithFormat:@"%@/%@", deepLinkString, deepLink.URL.query];
+    }
     
     if (self.scheme.length && ![self.scheme isEqualToString:deepLink.URL.scheme]) {
         return nil;

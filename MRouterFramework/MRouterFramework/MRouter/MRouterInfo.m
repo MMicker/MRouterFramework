@@ -43,6 +43,17 @@
     return self;
 }
 
+- (void) setRegexUrls:(NSArray *)regexUrls {
+    if (_regexUrls != regexUrls) {
+        NSMutableArray *result = [NSMutableArray arrayWithCapacity:regexUrls.count];
+        [regexUrls enumerateObjectsUsingBlock:^(NSString *obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            NSString *item = [obj stringByReplacingOccurrencesOfString:@"?" withString:@"/"];
+            [result addObject:item];
+        }];
+        _regexUrls = result;
+    }
+}
+
 + (instancetype)    router:(NSString *) name
                      index:(NSInteger) index
                    ctrlCls:(Class ) ctrlCls
