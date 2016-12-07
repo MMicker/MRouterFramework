@@ -39,4 +39,6 @@ typedef BOOL (^URLRouterHandlerBlock)(MRouterInfo *info, MRouterLink *link);
                 handlerCls:(Class) handleCls;
 
 
+- (BOOL) deleteURL:(NSString *)url;
+
 @end

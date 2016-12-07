@@ -149,6 +149,20 @@ static BOOL G_URL_RESOLVER_DEBUG = NO;
     }
 }
 
+- (void) unRegisterURLs:(NSArray *) urls {
+    @synchronized(self){
+
+        __block MRouterInfo * info = nil;
+        [urls enumerateObjectsUsingBlock:^(NSString *url, NSUInteger idx, BOOL * _Nonnull stop) {
+            [self.resolvers enumerateObjectsUsingBlock:^(MRouterInfo * infoTmp, NSUInteger idx, BOOL * _Nonnull stop) {
+                if ([infoTmp deleteURL:url]) {
+                    info = infoTmp;
+                };
+            }];
+        }];
+    }
+}
+
 - (MRouterInfo *) resolverInfoWithName:(NSString *) name {
     @synchronized(self){
         __block MRouterInfo *info = nil;

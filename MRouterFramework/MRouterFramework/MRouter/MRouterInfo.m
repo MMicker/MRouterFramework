@@ -54,6 +54,17 @@
     }
 }
 
+- (BOOL) deleteURL:(NSString *)url {
+    NSString *targetURL = [url stringByReplacingOccurrencesOfString:@"?" withString:@"/"];
+    if ([self.regexUrls containsObject:targetURL]) {
+        NSMutableArray *array = [NSMutableArray arrayWithArray:self.regexUrls];
+        [array removeObject:targetURL];
+        self.regexUrls = array;
+        return YES;
+    }
+    return NO;
+}
+
 + (instancetype)    router:(NSString *) name
                      index:(NSInteger) index
                    ctrlCls:(Class ) ctrlCls

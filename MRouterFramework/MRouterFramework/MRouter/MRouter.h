@@ -64,6 +64,13 @@ typedef NSURL * (^handleURLBlock)(NSURL *originURL);
 - (void) unRegisterURLRouter:(NSString *) name;
 
 /**
+ *  反注册某个URLs
+ *
+ *  @param url
+ */
+- (void) unRegisterURLs:(NSArray *) urls;
+
+/**
  *  查看某个已经注册的类
  *
  *  @param name 名称
