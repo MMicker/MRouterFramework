@@ -18,6 +18,15 @@
     [super viewDidLoad];
     [[MRouter sharedRouter] start];
     NSLog(@"%@", [MRouter sharedRouter]);
+    
+    
+    {
+        UIButton *button = [UIButton buttonWithType:UIButtonTypeContactAdd];
+        
+        button.frame = CGRectMake(100, 100, 100, 100);
+        [button addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside];
+        [self.view addSubview:button];
+    }
     // Do any additional setup after loading the view, typically from a nib.
 }
 
@@ -26,4 +35,7 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)buttonAction:(id)sender {
+    [[MRouter sharedRouter] handleURL:[NSURL URLWithString:@"http://micker.cn"] userInfo:nil];
+}
 @end
