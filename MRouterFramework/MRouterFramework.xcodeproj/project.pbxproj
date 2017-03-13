@@ -53,6 +53,8 @@
 		62B064B11D6ADF14004A0DF0 /* MRouterLink+UserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 62B064AF1D6ADF14004A0DF0 /* MRouterLink+UserInfo.m */; };
 		62CB319B1E277A46004946A6 /* MRouter+Modal.m in Sources */ = {isa = PBXBuildFile; fileRef = 62CB319A1E277A46004946A6 /* MRouter+Modal.m */; };
 		62CB319D1E277BF0004946A6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62CB319C1E277BF0004946A6 /* Main.storyboard */; };
+		62EAAF311E76703400B7D1CE /* MRouterInfo+Refine.h in Headers */ = {isa = PBXBuildFile; fileRef = 62EAAF2F1E76703400B7D1CE /* MRouterInfo+Refine.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		62EAAF321E76703400B7D1CE /* MRouterInfo+Refine.m in Sources */ = {isa = PBXBuildFile; fileRef = 62EAAF301E76703400B7D1CE /* MRouterInfo+Refine.m */; };
 		62FA80C11D58217A00A753C6 /* MRouterInfo+DefaultHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = 62FA80BF1D58217A00A753C6 /* MRouterInfo+DefaultHandler.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		62FA80C21D58217A00A753C6 /* MRouterInfo+DefaultHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 62FA80C01D58217A00A753C6 /* MRouterInfo+DefaultHandler.m */; };
 		62FA80D01D582A9F00A753C6 /* IURLResolver.h in Headers */ = {isa = PBXBuildFile; fileRef = 62348D321D54671900B88910 /* IURLResolver.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -101,6 +103,8 @@
 		62CB31991E277A46004946A6 /* MRouter+Modal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MRouter+Modal.h"; sourceTree = "<group>"; };
 		62CB319A1E277A46004946A6 /* MRouter+Modal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MRouter+Modal.m"; sourceTree = "<group>"; };
 		62CB319C1E277BF0004946A6 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		62EAAF2F1E76703400B7D1CE /* MRouterInfo+Refine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MRouterInfo+Refine.h"; sourceTree = "<group>"; };
+		62EAAF301E76703400B7D1CE /* MRouterInfo+Refine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MRouterInfo+Refine.m"; sourceTree = "<group>"; };
 		62FA80BF1D58217A00A753C6 /* MRouterInfo+DefaultHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MRouterInfo+DefaultHandler.h"; sourceTree = "<group>"; };
 		62FA80C01D58217A00A753C6 /* MRouterInfo+DefaultHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MRouterInfo+DefaultHandler.m"; sourceTree = "<group>"; };
 		62FA80C81D58269A00A753C6 /* url_resolver.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = url_resolver.plist; sourceTree = "<group>"; };
@@ -161,6 +165,8 @@
 				62348D371D54A0FF00B88910 /* Category */,
 				62348D0A1D5453FB00B88910 /* MRouterInfo.h */,
 				62348D0B1D5453FB00B88910 /* MRouterInfo.m */,
+				62EAAF2F1E76703400B7D1CE /* MRouterInfo+Refine.h */,
+				62EAAF301E76703400B7D1CE /* MRouterInfo+Refine.m */,
 				62348D331D5494D000B88910 /* MRouterInfo+Router.h */,
 				62348D341D5494D000B88910 /* MRouterInfo+Router.m */,
 				62FA80BF1D58217A00A753C6 /* MRouterInfo+DefaultHandler.h */,
@@ -246,6 +252,7 @@
 				62348D101D54540F00B88910 /* MRouterMatcher.h in Headers */,
 				62FA80C11D58217A00A753C6 /* MRouterInfo+DefaultHandler.h in Headers */,
 				62FA80D11D582AA500A753C6 /* IRouterLink.h in Headers */,
+				62EAAF311E76703400B7D1CE /* MRouterInfo+Refine.h in Headers */,
 				62B064B01D6ADF14004A0DF0 /* MRouterLink+UserInfo.h in Headers */,
 				62348D201D545A9400B88910 /* MRouterLink.h in Headers */,
 				62348D0C1D5453FB00B88910 /* MRouterInfo.h in Headers */,
@@ -382,6 +389,7 @@
 				62B064B11D6ADF14004A0DF0 /* MRouterLink+UserInfo.m in Sources */,
 				62348D361D5494D000B88910 /* MRouterInfo+Router.m in Sources */,
 				62348D311D54655000B88910 /* MRouterDefaultHandler.m in Sources */,
+				62EAAF321E76703400B7D1CE /* MRouterInfo+Refine.m in Sources */,
 				62348D0D1D5453FB00B88910 /* MRouterInfo.m in Sources */,
 				62348D151D54543200B88910 /* MRouterRegularExpression.m in Sources */,
 				62348D1B1D5459A900B88910 /* NSString+Router_URLEncoding.m in Sources */,

@@ -7,11 +7,11 @@
 //
 
 #import "MRouterInfo.h"
+#import "MRouterInfo+Refine.h"
 
 @interface MRouterInfo()
 
 @property (nonatomic, strong) NSString    *name;
-@property (nonatomic, strong) NSArray     *regexUrls;
 @property (nonatomic, strong) NSDictionary *extentions;
 @property (nonatomic, assign) NSInteger   index;
 @property (nonatomic, assign) Class       handleCls;
@@ -39,6 +39,8 @@
         self.extentions = extentions;
         [self setValue:((handleCls) ?
                         handleCls :  NSClassFromString(@"MRouterDefaultHandler")) forKey:@"handleCls"];
+        
+        [self refine:self];
     }
     return self;
 }
