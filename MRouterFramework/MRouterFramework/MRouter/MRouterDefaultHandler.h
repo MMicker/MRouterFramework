@@ -12,7 +12,7 @@
 
 @interface UIApplication (NavigationController)
 
-- (UIViewController*) rootViewController;
+- (UIViewController*) rootPresentViewController;
 
 - (UINavigationController *) rootNavigationController;
 

@@ -16,14 +16,14 @@
 
 @implementation UIApplication (NavigationController)
 
-- (UIViewController*) rootViewController {
+- (UIViewController*) rootPresentViewController {
     id<UIApplicationDelegate> appDelegate = (id<UIApplicationDelegate>)[UIApplication sharedApplication].delegate;
     UIViewController *controller = appDelegate.window.rootViewController;
     return [controller presentedViewController]?: controller;
 }
 
 - (UINavigationController *) rootNavigationController {
-    UIViewController *controller = [self rootViewController];
+    UIViewController *controller = [self rootPresentViewController];
 
     UINavigationController *navigation = (UINavigationController *)([controller isKindOfClass:[UINavigationController class]] ?
                                                                     controller:
@@ -36,7 +36,7 @@
 @implementation MRouterDefaultHandler
 
 - (UIViewController *) rootViewController:(MRouterLink *) link {
-    return [[UIApplication sharedApplication] rootViewController];
+    return [[UIApplication sharedApplication] rootPresentViewController];
 }
 
 #pragma IURLResolver
