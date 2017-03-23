@@ -13,11 +13,30 @@
 #import "MRouterInfo+DefaultHandler.h"
 #import "UIViewController+RouterLink.h"
 
+
+@implementation UIApplication (NavigationController)
+
+- (UIViewController*) rootViewController {
+    id<UIApplicationDelegate> appDelegate = (id<UIApplicationDelegate>)[UIApplication sharedApplication].delegate;
+    UIViewController *controller = appDelegate.window.rootViewController;
+    return [controller presentedViewController]?: controller;
+}
+
+- (UINavigationController *) rootNavigationController {
+    UIViewController *controller = [self rootViewController];
+
+    UINavigationController *navigation = (UINavigationController *)([controller isKindOfClass:[UINavigationController class]] ?
+                                                                    controller:
+                                                                    controller.navigationController);
+    return navigation;
+}
+
+@end
+
 @implementation MRouterDefaultHandler
 
 - (UIViewController *) rootViewController:(MRouterLink *) link {
-    UIViewController *controller = [UIApplication sharedApplication].keyWindow.rootViewController;
-    return [controller presentedViewController]?: controller;
+    return [[UIApplication sharedApplication] rootViewController];
 }
 
 #pragma IURLResolver

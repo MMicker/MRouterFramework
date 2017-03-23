@@ -10,8 +10,18 @@
 #import <UIKit/UIKit.h>
 #import "IURLResolver.h"
 
+@interface UIApplication (NavigationController)
+
+- (UIViewController*) rootViewController;
+
+- (UINavigationController *) rootNavigationController;
+
+@end
+
 @interface MRouterDefaultHandler : NSObject<IURLResolver>
 
 - (UIViewController *) rootViewController:(MRouterLink *) link;
 
 @end
+
+
