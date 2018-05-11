@@ -24,7 +24,7 @@ typedef NSURL * (^handleURLBlock)(NSURL *originURL);
  *
  *  @return self
  */
-- (id) start;
+- (id) start ;
 
 /**
  *  开启调试模式，会打印相关日志信息

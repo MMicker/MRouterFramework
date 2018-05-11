@@ -46,6 +46,15 @@ static BOOL G_URL_RESOLVER_DEBUG = NO;
 }
 
 - (id) start {
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        [self __internalStart];
+    });
+
+    return self;
+}
+
+- (id) __internalStart {
     //read from plist file
     NSString *URLRouterDataPath = [[NSBundle mainBundle]  pathForResource:@"url_resolver" ofType:@"plist"];
     NSDictionary *dictionary = [NSDictionary dictionaryWithContentsOfFile:URLRouterDataPath];
@@ -177,6 +186,7 @@ static BOOL G_URL_RESOLVER_DEBUG = NO;
 }
 
 - (BOOL) handleURL:(NSURL *) url userInfo:(id) userInfo useDefault:(BOOL) flag {
+    [self start];
     __block MRouterLink *link = nil;
     __block MRouterInfo *routerInfo = nil;
     NSURL *resultURL = self.routerHandler ? self.routerHandler(url) : url;
