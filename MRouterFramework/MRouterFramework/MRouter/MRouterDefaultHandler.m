@@ -12,6 +12,7 @@
 #import "MRouterMatcher.h"
 #import "MRouterInfo+DefaultHandler.h"
 #import "UIViewController+RouterLink.h"
+#import "MRouterLink+UserInfo.h"
 
 
 @implementation UIApplication (NavigationController)
@@ -44,6 +45,8 @@
 - (void) handleRouter:(MRouterInfo*) info link:(MRouterLink *) link {
     
     UIViewController *targetViewController = [info targetController];
+    [targetViewController setMatchedURL:link.matchedURL];
+    
     if (targetViewController) {
         UIViewController *controller = [self rootViewController:link];
         [targetViewController handleRouterLink:link];

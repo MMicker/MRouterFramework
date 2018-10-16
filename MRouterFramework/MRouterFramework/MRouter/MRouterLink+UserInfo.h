@@ -6,10 +6,19 @@
 //  Copyright © 2016年 Micker. All rights reserved.
 //
 
-#import <MRouterFramework/MRouterFramework.h>
+#import "MRouterLink.h"
 
 @interface MRouterLink (UserInfo)
 
+/**
+ 附带的用户信息
+ */
 @property (nonatomic, strong) id userInfo;
+
+
+/**
+ 匹配上的路由
+ */
+@property (nonatomic, copy) NSString  *matchedURL;
 
 @end

@@ -12,3 +12,13 @@
 @interface UIViewController (RouterLink) <IRouterLink>
 
 @end
+
+
+@interface UIViewController (MatchedURL)
+
+/**
+ 匹配上的路由
+ */
+@property (nonatomic, copy) NSString  *matchedURL;
+
+@end

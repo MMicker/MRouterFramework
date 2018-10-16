@@ -21,12 +21,14 @@ static char objc_default_router;
     __block MRouterLink *link = nil;
     if (direct) {
         link  = [[MRouterLink alloc] initWithURL:url];
+        link.matchedURL = [url absoluteString];
     } else {
         [self.regexUrls enumerateObjectsUsingBlock:^(NSString * obj, NSUInteger idx, BOOL * _Nonnull stop) {
             MRouterMatcher *matcher = [MRouterMatcher matcherWithRoute:obj];
             link = [matcher deepLinkWithURL:url];
             if (link) {
                 *stop = YES;
+                link.matchedURL = obj;
             }
         }];
     }
