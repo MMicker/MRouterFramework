@@ -76,6 +76,17 @@ iOS路由，不仅仅是实现页面的跳转！
 
 ##ChangeLog
 
+V0.3
+---
+*   添加匹配上的路由规则URL，MRouterLink、UIViewController
+```
+
+/**
+ 匹配上的路由
+ */
+@property (nonatomic, copy) NSString  *matchedURL;
+```
+
 V0.2
 ---
 *   添加缺省的处理方式，可以通过配置文件或者代码进行注入
