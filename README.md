@@ -78,7 +78,7 @@ iOS路由，不仅仅是实现页面的跳转！
 
 V0.3
 ---
-*   添加匹配上的路由规则URL，MRouterLink、UIViewController
+*   添加匹配上的路由URL，MRouterLink、UIViewController
 ```
 
 /**
