@@ -43,7 +43,10 @@
 #pragma IURLResolver
 
 - (void) handleRouter:(MRouterInfo*) info link:(MRouterLink *) link {
-    
+    [self handleRouter:info link:link navation:nil];
+}
+
+- (void) handleRouter:(MRouterInfo*) info link:(MRouterLink *) link navation:(void(^)(UINavigationController *navigationController)) navationBlock {
     UIViewController *targetViewController = [info targetController];
     [targetViewController setMatchedURL:link.matchedURL];
     
@@ -56,6 +59,7 @@
             
             Class bgNavigation = NSClassFromString(@"BGNavigationController")?:([UINavigationController class]);
             navigation = [[bgNavigation alloc] initWithRootViewController:targetViewController];
+            !navationBlock?:navationBlock(navigation);
             [controller presentViewController:navigation animated:[info animated] completion:nil];
 
         }
@@ -63,6 +67,7 @@
             navigation = (UINavigationController *)([controller isKindOfClass:[UINavigationController class]] ?
                                                     controller:
                                                     controller.navigationController);
+            !navationBlock?:navationBlock(navigation);
             [navigation pushViewController:targetViewController animated:[info animated]];
 
         }

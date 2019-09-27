@@ -19,11 +19,14 @@
  *
  *  @parameters
  *  @param  link        MRouterLink *
+ *  @param  navationBlock        配置导航控制器
+ *
  *
  *  @return             无
  *
  */
 - (void) handleRouter:(MRouterInfo*) info link:(MRouterLink *) link;
+- (void) handleRouter:(MRouterInfo*) info link:(MRouterLink *) link navation:(void(^)(UINavigationController *navigationController)) navationBlock;
 
 @end
 
