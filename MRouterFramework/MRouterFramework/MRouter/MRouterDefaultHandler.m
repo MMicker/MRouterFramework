@@ -59,7 +59,7 @@
             Class bgNavigation = NSClassFromString(@"BGNavigationController")?:([UINavigationController class]);
             navigation = [[bgNavigation alloc] initWithRootViewController:targetViewController];
             !navationBlock?:navationBlock(navigation);
-            [targetViewController handleRouterLink:link navigationController:navigation];
+            [self handleLink:link controller:targetViewController navigationController:navigation];
             [controller presentViewController:navigation animated:[info animated] completion:nil];
 
         }
@@ -68,10 +68,21 @@
                                                     controller:
                                                     controller.navigationController);
             !navationBlock?:navationBlock(navigation);
-            [targetViewController handleRouterLink:link navigationController:navigation];
+            [self handleLink:link controller:targetViewController navigationController:navigation];
             [navigation pushViewController:targetViewController animated:[info animated]];
 
         }
+    }
+}
+
+- (void)    handleLink:(MRouterLink*) link
+            controller:(UIViewController *) targetViewController
+  navigationController:(UINavigationController *)navigationController {
+    
+    if ([targetViewController respondsToSelector:@selector(handleRouterLink:navigationController:)]) {
+        [targetViewController handleRouterLink:link navigationController:navigationController];
+    } else {
+        [targetViewController handleRouterLink:link];
     }
 }
 

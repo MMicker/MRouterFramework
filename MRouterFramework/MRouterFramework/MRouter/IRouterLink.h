@@ -14,6 +14,7 @@
 
 @protocol IRouterLink <NSObject>
 
+@optional
 - (void) handleRouterLink:(MRouterLink *) link;
 
 - (void) handleRouterLink:(MRouterLink *) link navigationController:(UINavigationController*) navigationController;
