@@ -52,7 +52,6 @@
     
     if (targetViewController) {
         UIViewController *controller = [self rootViewController:link];
-        [targetViewController handleRouterLink:link];
         UINavigationController *navigation = nil;
         
         if ([info modalPresent]) {
@@ -60,6 +59,7 @@
             Class bgNavigation = NSClassFromString(@"BGNavigationController")?:([UINavigationController class]);
             navigation = [[bgNavigation alloc] initWithRootViewController:targetViewController];
             !navationBlock?:navationBlock(navigation);
+            [targetViewController handleRouterLink:link navigationController:navigation];
             [controller presentViewController:navigation animated:[info animated] completion:nil];
 
         }
@@ -68,6 +68,7 @@
                                                     controller:
                                                     controller.navigationController);
             !navationBlock?:navationBlock(navigation);
+            [targetViewController handleRouterLink:link navigationController:navigation];
             [navigation pushViewController:targetViewController animated:[info animated]];
 
         }

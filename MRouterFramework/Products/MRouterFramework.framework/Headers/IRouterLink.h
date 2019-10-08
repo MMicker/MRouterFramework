@@ -16,6 +16,8 @@
 
 - (void) handleRouterLink:(MRouterLink *) link;
 
+- (void) handleRouterLink:(MRouterLink *) link navigationController:(UINavigationController*) navigationController;
+
 @end
 
 #endif /* IRouterLink_h */
