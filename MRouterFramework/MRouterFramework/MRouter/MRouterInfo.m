@@ -8,6 +8,7 @@
 
 #import "MRouterInfo.h"
 #import "MRouterInfo+Refine.h"
+#import "NSString+Router_URLEncoding.h"
 
 @interface MRouterInfo()
 
@@ -48,16 +49,19 @@
 - (void) setRegexUrls:(NSArray *)regexUrls {
     if (_regexUrls != regexUrls) {
         NSMutableArray *result = [NSMutableArray arrayWithCapacity:regexUrls.count];
-        [regexUrls enumerateObjectsUsingBlock:^(NSString *obj, NSUInteger idx, BOOL * _Nonnull stop) {
-            NSString *item = [obj stringByReplacingOccurrencesOfString:@"?" withString:@"/"];
-            [result addObject:item];
+        [regexUrls enumerateObjectsUsingBlock:^(NSString *url, NSUInteger idx, BOOL * _Nonnull stop) {
+//            NSString *item = [obj stringByReplacingOccurrencesOfString:@"?" withString:@"/"];
+            NSString *targetURL = [url router_removeScheme];
+            targetURL = [targetURL length] > 0 ? targetURL : url;
+            [result addObject:targetURL];
         }];
         _regexUrls = result;
     }
 }
 
 - (BOOL) deleteURL:(NSString *)url {
-    NSString *targetURL = [url stringByReplacingOccurrencesOfString:@"?" withString:@"/"];
+    NSString *targetURL = [url router_removeScheme];//[url stringByReplacingOccurrencesOfString:@"?" withString:@"/"];
+    targetURL = [targetURL length] > 0 ? targetURL : url;
     if ([self.regexUrls containsObject:targetURL]) {
         NSMutableArray *array = [NSMutableArray arrayWithArray:self.regexUrls];
         [array removeObject:targetURL];

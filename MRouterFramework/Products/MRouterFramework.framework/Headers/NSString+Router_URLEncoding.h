@@ -28,6 +28,8 @@
 
 @interface NSString (Router_OAURLEncodingAdditions)
 
+- (NSString *)router_removeScheme;
+
 - (NSString *)router_URLEncodedString;
 - (NSString *)router_URLDecodedString;
 

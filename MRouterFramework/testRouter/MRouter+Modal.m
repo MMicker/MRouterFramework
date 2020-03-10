@@ -20,6 +20,24 @@
                                       regexUrls:@[@"http://micker.cn",@"wscn/login"]
                                      extentions:@{@"modal":@(YES)}
                                      handlerCls:nil]];
+    
+    
+    MRouterInfo *infor = [MRouterInfo router:@"MVIPSub"
+                                       index:100
+                                     ctrlCls:NULL
+                                   regexUrls:@[@"https://wallstreetcn.com/member/channel/gold/privilege"]
+                                  extentions:nil
+                                 handleBlock:^BOOL(MRouterInfo *info, MRouterLink *link)
+    {
+        NSLog(@"link = %@", link.URL);
+//       [[MRouter sharedRouter] handleURL:[NSURL URLWithString:@"https://wallstreetcn.com/member/gold"] userInfo:link.userInfo];
+//       [[NSNotificationCenter defaultCenter] postNotificationName:@"MVIPSUBITEMNOTIFICATION" object:link.URL];
+       return YES;
+    }];
+    
+    [self registerURLRouter:infor];
+    
+    
 
 }
 

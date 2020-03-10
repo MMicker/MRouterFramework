@@ -36,6 +36,9 @@
 }
 
 - (IBAction)buttonAction:(id)sender {
-    [[MRouter sharedRouter] handleURL:[NSURL URLWithString:@"http://micker.cn"] userInfo:nil];
+//    [[MRouter sharedRouter] handleURL:[NSURL URLWithString:@"http://micker.cn"] userInfo:nil];
+    [[MRouter sharedRouter] handleURL:[NSURL URLWithString:@"httpsaaa://wallstreetcn.com/member/channel/gold/privilege?channel_type=gold-global&index=1"] userInfo:nil];
+
+    
 }
 @end

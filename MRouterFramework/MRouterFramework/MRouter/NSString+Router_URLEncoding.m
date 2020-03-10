@@ -28,6 +28,15 @@
 
 @implementation NSString (Router_OAURLEncodingAdditions)
 
+- (NSString *)router_removeScheme {
+    NSString *result = [self copy];
+    NSRange range = [result rangeOfString:@"://"];
+    if (range.location != NSNotFound) {
+        result = [result substringFromIndex:range.location+range.length];
+    }
+    return result;
+}
+
 - (NSString *)router_URLEncodedString
 {
     NSString *result = (NSString *)CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault,
