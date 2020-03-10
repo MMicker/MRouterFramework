@@ -20,7 +20,21 @@
 - (UIViewController*) rootPresentViewController {
     id<UIApplicationDelegate> appDelegate = (id<UIApplicationDelegate>)[UIApplication sharedApplication].delegate;
     UIViewController *controller = appDelegate.window.rootViewController;
-    return [controller presentedViewController]?: controller;
+    while (controller.presentedViewController) {
+        controller = [self _topViewController:controller.presentedViewController];
+    }
+    return controller;
+}
+
+- (UIViewController *)_topViewController:(UIViewController *)vc {
+    if ([vc isKindOfClass:[UINavigationController class]]) {
+        return [self _topViewController:[(UINavigationController *)vc topViewController]];
+    } else if ([vc isKindOfClass:[UITabBarController class]]) {
+        return [self _topViewController:[(UITabBarController *)vc selectedViewController]];
+    } else {
+        return vc;
+    }
+    return nil;
 }
 
 - (UINavigationController *) rootNavigationController {
