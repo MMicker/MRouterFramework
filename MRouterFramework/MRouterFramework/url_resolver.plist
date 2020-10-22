@@ -37,7 +37,7 @@
 				<true/>
 			</dict>
 			<key>class</key>
-			<string>#MNavigatorDetailViewController</string>
+			<string>#ViewController</string>
 			<key>name</key>
 			<string>korea_detail_url_solver</string>
 			<key>index</key>

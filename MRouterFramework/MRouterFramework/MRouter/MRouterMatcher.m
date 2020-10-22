@@ -9,9 +9,12 @@
 #import "MRouterMatcher.h"
 #import "MRouterRegularExpression.h"
 
+static id<MRouterMatcherProtocol> _gRouterMatcher;
+
 @interface MRouterMatcher ()
 
 @property (nonatomic, copy)   NSString *scheme;
+@property (nonatomic, copy)   NSString *host;
 
 @property (nonatomic, strong) MRouterRegularExpression *regexMatcher;
 
@@ -21,6 +24,14 @@
 
 + (instancetype)matcherWithRoute:(NSString *)route {
     return [[self alloc] initWithRoute:route];
+}
+
++ (void) setMatcherProtocol:(id<MRouterMatcherProtocol>)matcherProtocol {
+    _gRouterMatcher = matcherProtocol;
+}
+
++ (id<MRouterMatcherProtocol>) matcherProtocol {
+    return _gRouterMatcher;
 }
 
 - (instancetype)initWithRoute:(NSString *)route {
@@ -33,17 +44,24 @@
         
         NSArray *parts = [route componentsSeparatedByString:@"://"];
         _scheme = parts.count > 1 ? [parts firstObject] : nil;
+        NSArray *hosts = [[parts lastObject] componentsSeparatedByString:@"/"];
+        _host = hosts.count > 1 ? [hosts firstObject] : parts;
         _regexMatcher = [MRouterRegularExpression regularExpressionWithPattern:[parts lastObject]];
     }
     
     return self;
 }
 
-
 - (MRouterLink *)deepLinkWithURL:(NSURL *)url {
     
     MRouterLink *deepLink       = [[MRouterLink alloc] initWithURL:url];
-    NSString *deepLinkString    = [NSString stringWithFormat:@"%@%@", deepLink.URL.host, deepLink.URL.path];
+    id<MRouterMatcherProtocol> matcher = [[self class] matcherProtocol];
+    NSString *host = deepLink.URL.host;
+    if (matcher) {
+        host = [matcher matchOriginHost:_host routerHost:host];
+    }
+    NSString *deepLinkString    = [NSString stringWithFormat:@"%@%@", host, deepLink.URL.path];
+    
 //    if ([deepLink.URL.query length] > 0) {
 //        //用于匹配带有参数的url, 在此对？进行转义成/
 //        deepLinkString    = [NSString stringWithFormat:@"%@/%@", deepLinkString, deepLink.URL.query];

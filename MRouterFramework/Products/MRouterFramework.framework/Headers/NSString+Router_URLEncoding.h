@@ -31,6 +31,11 @@
 - (NSString *)router_removeScheme;
 
 - (NSString *)router_URLEncodedString;
+
 - (NSString *)router_URLDecodedString;
+
+
+/// 是不是IP4地址
+- (BOOL) isIPAddress;
 
 @end

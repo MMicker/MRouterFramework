@@ -58,4 +58,15 @@
 	return result;
 }
 
+- (BOOL) isIPAddress {
+    NSString *regex = @"((2(5[0-5]|[0-4]\\d))|[0-1]?\\d{1,2})(\\.((2(5[0-5]|[0-4]\\d))|[0-1]?\\d{1,2})){3}";
+    NSRegularExpression *componentRegex = [NSRegularExpression regularExpressionWithPattern:regex
+                                                                                    options:0
+                                                                                      error:nil];
+    NSString *target = [self copy];
+    NSArray *matches = [componentRegex matchesInString:target
+                                               options:0
+                                                 range:NSMakeRange(0, target.length)];
+    return [matches count] > 0;
+}
 @end
