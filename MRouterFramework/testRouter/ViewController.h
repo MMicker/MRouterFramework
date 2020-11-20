@@ -8,6 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
+@interface MArticleBottomView : UIView
+
+@property (nonatomic, strong) NSArray *collectButtons;
+@property (nonatomic, strong) CALayer *shareLayer;
+@property (nonatomic, strong) NSArray *shareButtons;
+
+- (CGFloat) configSubviews;
+
+@end
+
+
 @interface ViewController : UIViewController
 
 

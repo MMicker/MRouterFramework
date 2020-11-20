@@ -45,7 +45,7 @@ static id<MRouterMatcherProtocol> _gRouterMatcher;
         NSArray *parts = [route componentsSeparatedByString:@"://"];
         _scheme = parts.count > 1 ? [parts firstObject] : nil;
         NSArray *hosts = [[parts lastObject] componentsSeparatedByString:@"/"];
-        _host = hosts.count > 1 ? [hosts firstObject] : parts;
+        _host = [hosts firstObject];
         _regexMatcher = [MRouterRegularExpression regularExpressionWithPattern:[parts lastObject]];
     }
     
@@ -58,7 +58,7 @@ static id<MRouterMatcherProtocol> _gRouterMatcher;
     id<MRouterMatcherProtocol> matcher = [[self class] matcherProtocol];
     NSString *host = deepLink.URL.host;
     if (matcher) {
-        host = [matcher matchOriginHost:_host routerHost:host];
+        host = [matcher matchOriginHost:host routerHost:_host];
     }
     NSString *deepLinkString    = [NSString stringWithFormat:@"%@%@", host, deepLink.URL.path];
     

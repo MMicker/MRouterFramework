@@ -108,7 +108,7 @@
 }
 
 - (NSString *) debugDescription {
-    return [NSString stringWithFormat:@"name：%@, index：%@, url: %@;", self.name, @(self.index), self.regexUrls];
+    return [NSString stringWithFormat:@"name：%@, index：%@, ctrlCls:%@, url: %@ ;", self.name, @(self.index),self.handlerCtrlCls?:@"block", self.regexUrls];
 }
 
 @end
