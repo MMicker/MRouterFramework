@@ -19,18 +19,16 @@
 
 - (UIViewController*) rootPresentViewController {
     id<UIApplicationDelegate> appDelegate = (id<UIApplicationDelegate>)[UIApplication sharedApplication].delegate;
-    UIViewController *controller = appDelegate.window.rootViewController;
-    while (controller.presentedViewController) {
-        controller = [self _topViewController:controller.presentedViewController];
-    }
-    return controller;
+    return [self _topViewController:appDelegate.window.rootViewController];
 }
 
 - (UIViewController *)_topViewController:(UIViewController *)vc {
     if ([vc isKindOfClass:[UINavigationController class]]) {
-        return [self _topViewController:[(UINavigationController *)vc topViewController]];
+        return [self _topViewController:[(UINavigationController *)vc visibleViewController]];
     } else if ([vc isKindOfClass:[UITabBarController class]]) {
         return [self _topViewController:[(UITabBarController *)vc selectedViewController]];
+    } else if ([vc presentedViewController]) {
+       return [self _topViewController:[vc presentedViewController]];
     } else {
         return vc;
     }

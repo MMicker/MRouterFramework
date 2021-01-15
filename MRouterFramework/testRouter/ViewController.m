@@ -83,7 +83,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    [[MRouter sharedRouter] enableDebug];
     MArticleBottomView *abView = [MArticleBottomView new];
     
     UIButton *buttonC = [abView configLikeButton:@"喜欢"];
