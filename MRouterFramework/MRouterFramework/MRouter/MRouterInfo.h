@@ -16,12 +16,12 @@ typedef BOOL (^URLRouterHandlerBlock)(MRouterInfo *info, MRouterLink *link);
 
 @interface MRouterInfo : NSObject
 
-@property (nonatomic, strong, readonly) NSString    *name;
-@property (nonatomic, strong, readwrite) NSArray     *regexUrls;
-@property (nonatomic, strong, readonly) NSDictionary *extentions;
-@property (nonatomic, assign, readonly) NSInteger   index;
-@property (nonatomic, assign, readonly) Class       handleCls;
-@property (nonatomic, assign, readonly) Class       handlerCtrlCls;
+@property (nonatomic, strong, readonly) NSString        *name;
+@property (nonatomic, strong, readwrite) NSArray        *regexUrls;
+@property (nonatomic, strong, readonly) NSDictionary    *extentions;
+@property (nonatomic, assign, readonly) NSInteger       index;
+@property (nonatomic, assign, readonly) Class           handleCls;
+@property (nonatomic, assign, readonly) Class           handlerCtrlCls;
 @property (nonatomic, strong, readonly) URLRouterHandlerBlock block;
 
 + (instancetype)    router:(NSString *) name

@@ -34,6 +34,8 @@
 
 - (NSString *)router_URLDecodedString;
 
+- (NSURL *) router_URL;
+
 
 /// 是不是IP4地址
 - (BOOL) isIPAddress;

@@ -22,6 +22,8 @@
 
 - (UIViewController *) rootViewController:(MRouterLink *) link;
 
+- (UINavigationController *) rootNavigationController:(MRouterLink *) link;
+
 @end
 
 

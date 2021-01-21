@@ -84,6 +84,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [[MRouter sharedRouter] enableDebug];
+    
+    self.title = NSStringFromClass([self class]);
     MArticleBottomView *abView = [MArticleBottomView new];
     
     UIButton *buttonC = [abView configLikeButton:@"喜欢"];
@@ -130,10 +132,20 @@
     
     {
         UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-        [button setTitle:@"本地域名替换" forState:UIControlStateNormal];
+        [button setTitle:@"singleA" forState:UIControlStateNormal];
+//        [button setTitle:@"本地域名替换" forState:UIControlStateNormal];
         [button setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
         button.frame = CGRectMake(100, 300, 100, 100);
         [button addTarget:self action:@selector(buttonAction2:) forControlEvents:UIControlEventTouchUpInside];
+        [self.view addSubview:button];
+    }
+    
+    {
+        UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+        [button setTitle:@"modalB" forState:UIControlStateNormal];
+        [button setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+        button.frame = CGRectMake(100, 400, 100, 100);
+        [button addTarget:self action:@selector(buttonAction3:) forControlEvents:UIControlEventTouchUpInside];
         [self.view addSubview:button];
     }
     
@@ -163,7 +175,22 @@
 
 
 - (IBAction)buttonAction2:(id)sender {
-//    [[MRouter sharedRouter] handleURL:[NSURL URLWithString:@"http://micker.cn"] userInfo:nil];
-    [[MRouter sharedRouter] handleURL:[NSURL URLWithString:@"httpsaaa://192.168.0.111:8080/member/channel/gold/privilege?channel_type=gold-global&index=1"] userInfo:nil];
+    [[MRouter sharedRouter] handleURL:[NSURL URLWithString:@"http://micker.cna"] userInfo:@{@"single":@(YES)}];
+//    [[MRouter sharedRouter] handleURL:[NSURL URLWithString:@"httpsaaa://192.168.0.111:8080/member/channel/gold/privilege?channel_type=gold-global&index=1"] userInfo:nil];
 }
+
+- (IBAction)buttonAction3:(id)sender {
+    [[MRouter sharedRouter] handleURL:[NSURL URLWithString:@"http://micker.cnb"] userInfo:nil];
+//    [[MRouter sharedRouter] handleURL:[NSURL URLWithString:@"httpsaaa://192.168.0.111:8080/member/channel/gold/privilege?channel_type=gold-global&index=1"] userInfo:nil];
+}
+@end
+
+
+@implementation AViewController
+
+@end
+
+
+@implementation BViewController
+
 @end

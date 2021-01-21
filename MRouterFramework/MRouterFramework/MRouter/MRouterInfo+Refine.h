@@ -9,6 +9,9 @@
 #import "MRouterInfo.h"
 
 
+#pragma mark - Depreciated
+
+/// 此协议已废去
 @protocol MRouterInfoProtocol <NSObject>
 
 - (void) refine:(MRouterInfo *) routerInfo;
@@ -26,5 +29,6 @@
 
  @param item 实现了MRouterInfoProtocol的对象，全局持有
  */
-FOUNDATION_EXPORT void  registerRouterInfoProtocol(id<MRouterInfoProtocol> item);
+FOUNDATION_EXPORT void  registerRouterInfoProtocol(id<MRouterInfoProtocol> item) NS_UNAVAILABLE;
+
 

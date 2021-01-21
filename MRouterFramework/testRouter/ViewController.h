@@ -24,3 +24,13 @@
 
 @end
 
+
+@interface AViewController : ViewController
+
+
+@end
+
+@interface BViewController : ViewController
+
+
+@end

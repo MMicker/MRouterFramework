@@ -18,7 +18,23 @@
                                           index:100
                                         ctrlCls:NSClassFromString(@"ViewController")
                                       regexUrls:@[@"http://micker.cn",@"wscn/login"]
-                                     extentions:@{@"modal":@(YES)}
+                                     extentions:@{@"modal":@(YES),@"single":@(YES)}
+                                     handlerCls:nil]];
+    
+    
+    [self registerURLRouter:[MRouterInfo router:@"Modal"
+                                          index:100
+                                        ctrlCls:NSClassFromString(@"AViewController")
+                                      regexUrls:@[@"http://micker.cna",@"wscn/login"]
+                                     extentions:@{@"modal":@(YES),@"needLogin":@(YES)}
+                                     handlerCls:nil]];
+    
+    
+    [self registerURLRouter:[MRouterInfo router:@"Modal"
+                                          index:100
+                                        ctrlCls:NSClassFromString(@"BViewController")
+                                      regexUrls:@[@"http://micker.cnb",@"wscn/login"]
+                                     extentions:@{@"single":@(YES)}
                                      handlerCls:nil]];
     
     

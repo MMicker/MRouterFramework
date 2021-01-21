@@ -22,6 +22,8 @@
 
 /* Begin PBXBuildFile section */
 		6217DE2A1D51B7C40059451A /* MRouterFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = 6217DE291D51B7C40059451A /* MRouterFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		62346A6125B9589100C50CFD /* MRouterIntercept.h in Headers */ = {isa = PBXBuildFile; fileRef = 62346A5F25B9589100C50CFD /* MRouterIntercept.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		62346A6225B9589200C50CFD /* MRouterIntercept.m in Sources */ = {isa = PBXBuildFile; fileRef = 62346A6025B9589100C50CFD /* MRouterIntercept.m */; };
 		62348D0C1D5453FB00B88910 /* MRouterInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 62348D0A1D5453FB00B88910 /* MRouterInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		62348D0D1D5453FB00B88910 /* MRouterInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 62348D0B1D5453FB00B88910 /* MRouterInfo.m */; };
 		62348D101D54540F00B88910 /* MRouterMatcher.h in Headers */ = {isa = PBXBuildFile; fileRef = 62348D0E1D54540F00B88910 /* MRouterMatcher.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -66,6 +68,8 @@
 		6217DE261D51B7C40059451A /* MRouterFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MRouterFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6217DE291D51B7C40059451A /* MRouterFramework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MRouterFramework.h; sourceTree = "<group>"; };
 		6217DE2B1D51B7C40059451A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		62346A5F25B9589100C50CFD /* MRouterIntercept.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MRouterIntercept.h; sourceTree = "<group>"; };
+		62346A6025B9589100C50CFD /* MRouterIntercept.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MRouterIntercept.m; sourceTree = "<group>"; };
 		62348D0A1D5453FB00B88910 /* MRouterInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRouterInfo.h; sourceTree = "<group>"; };
 		62348D0B1D5453FB00B88910 /* MRouterInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRouterInfo.m; sourceTree = "<group>"; };
 		62348D0E1D54540F00B88910 /* MRouterMatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRouterMatcher.h; sourceTree = "<group>"; };
@@ -168,6 +172,8 @@
 				62348D371D54A0FF00B88910 /* Category */,
 				62348D0A1D5453FB00B88910 /* MRouterInfo.h */,
 				62348D0B1D5453FB00B88910 /* MRouterInfo.m */,
+				62346A5F25B9589100C50CFD /* MRouterIntercept.h */,
+				62346A6025B9589100C50CFD /* MRouterIntercept.m */,
 				62EAAF2F1E76703400B7D1CE /* MRouterInfo+Refine.h */,
 				62EAAF301E76703400B7D1CE /* MRouterInfo+Refine.m */,
 				62348D331D5494D000B88910 /* MRouterInfo+Router.h */,
@@ -256,6 +262,7 @@
 				62FA80D01D582A9F00A753C6 /* IURLResolver.h in Headers */,
 				62348D101D54540F00B88910 /* MRouterMatcher.h in Headers */,
 				62FA80C11D58217A00A753C6 /* MRouterInfo+DefaultHandler.h in Headers */,
+				62346A6125B9589100C50CFD /* MRouterIntercept.h in Headers */,
 				62FA80D11D582AA500A753C6 /* IRouterLink.h in Headers */,
 				62EAAF311E76703400B7D1CE /* MRouterInfo+Refine.h in Headers */,
 				62B064B01D6ADF14004A0DF0 /* MRouterLink+UserInfo.h in Headers */,
@@ -393,6 +400,7 @@
 				62348D251D54612900B88910 /* MRouter.m in Sources */,
 				62B064B11D6ADF14004A0DF0 /* MRouterLink+UserInfo.m in Sources */,
 				62348D361D5494D000B88910 /* MRouterInfo+Router.m in Sources */,
+				62346A6225B9589200C50CFD /* MRouterIntercept.m in Sources */,
 				62348D311D54655000B88910 /* MRouterDefaultHandler.m in Sources */,
 				62EAAF321E76703400B7D1CE /* MRouterInfo+Refine.m in Sources */,
 				62348D0D1D5453FB00B88910 /* MRouterInfo.m in Sources */,

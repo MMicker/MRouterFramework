@@ -11,6 +11,8 @@
 #import "MRouterMatcher.h"
 #import "IURLResolver.h"
 #import "MRouterLink+UserInfo.h"
+#import "MRouterIntercept.h"
+
 #import <objc/runtime.h>
 
 static char objc_default_router;
@@ -34,14 +36,26 @@ static char objc_default_router;
     if (link) {
         link.matchedURL = [url absoluteString];
         link.userInfo = userInfo;
-        if (self.block) {
-            self.block(self, link);
+        
+        id<MRouterInterceptProtocol> intercept = gRouterInterceptItem();
+        if (intercept) {
+            [intercept interceptRouterInfo:self link:link continueBlock:^(void) {
+                [self __handleRouterLink:link];
+            }];
         } else {
-            id<IURLResolver> handleInstance = [[self.handleCls alloc] init];
-            [handleInstance handleRouter:self link:link];
+            [self __handleRouterLink:link];
         }
     }
     return link;
+}
+
+- (void) __handleRouterLink:(MRouterLink *) link {
+    if (self.block) {
+        self.block(self, link);
+    } else {
+        id<IURLResolver> handleInstance = [[self.handleCls alloc] init];
+        [handleInstance handleRouter:self link:link];
+    }
 }
 
 - (BOOL) isDefault {

@@ -7,6 +7,9 @@
 //
 
 #import "MCustomMatcher.h"
+#import "MRouterInfo.h"
+#import "MRouterLink.h"
+#import "MRouter.h"
 
 @interface MRouterMatcher(WSCN)
 
@@ -32,5 +35,29 @@
     }
     return originHost;
 }
+
+@end
+
+
+@implementation MCustomRouterIntercept
+
++ (void) load {
+    registerRouterInterceptProtocol([MCustomRouterIntercept new]);
+}
+
+
+- (void) interceptRouterInfo:(MRouterInfo *) routerInfo link:(MRouterLink *) link continueBlock:(void (^)(void)) continueBlock {
+    if (routerInfo.extentions[@"needLogin"]) {
+        
+        [[MRouter sharedRouter] handleURL:[NSURL URLWithString:@"http://micker.cnb"] userInfo:nil];
+
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            !continueBlock?:continueBlock();
+        });
+        return;
+    }
+    !continueBlock?:continueBlock();
+}
+
 
 @end

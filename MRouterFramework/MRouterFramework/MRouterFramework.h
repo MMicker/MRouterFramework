@@ -27,6 +27,7 @@ FOUNDATION_EXPORT const unsigned char MRouterFrameworkVersionString[];
 #import "MRouterInfo+DefaultHandler.h"
 #import "MRouterInfo+Router.h"
 #import "MRouterInfo+Refine.h"
+#import "MRouterIntercept.h"
 #import "MRouterMatcher.h"
 #import "MRouterRegularExpression.h"
 #import "MRouterLink.h"

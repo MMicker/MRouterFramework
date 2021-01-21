@@ -52,6 +52,10 @@
     return [[UIApplication sharedApplication] rootPresentViewController];
 }
 
+- (UINavigationController *) rootNavigationController:(MRouterLink *) link {
+    return [[UIApplication sharedApplication] rootNavigationController];
+}
+
 #pragma IURLResolver
 
 - (void) handleRouter:(MRouterInfo*) info link:(MRouterLink *) link {
@@ -59,30 +63,52 @@
 }
 
 - (void) handleRouter:(MRouterInfo*) info link:(MRouterLink *) link navation:(void(^)(UINavigationController *navigationController)) navationBlock {
-    UIViewController *targetViewController = [info targetController];
+    __block UIViewController *targetViewController = nil;
+    NSMutableDictionary *data = [NSMutableDictionary dictionaryWithObjects:@[@(info.animated),@(info.modalPresent),@(info.singleInstance)]
+                                                                   forKeys:@[@"animated",@"modal",@"single"]];
+    
+    if ([link.userInfo isKindOfClass: [NSDictionary class]]) {
+        [data addEntriesFromDictionary:link.userInfo];
+    }
+    
+    BOOL animated   = [[data valueForKey:@"animated"] boolValue];
+    BOOL modal      = [[data valueForKey:@"modal"] boolValue];
+    BOOL single     = [[data valueForKey:@"single"] boolValue];
+    
+    // 单例
+    if (single) {
+        UINavigationController *navigation = [self rootNavigationController:link];
+
+        [[navigation.viewControllers copy] enumerateObjectsWithOptions:NSEnumerationReverse usingBlock:^(__kindof UIViewController * _Nonnull controller, NSUInteger idx, BOOL * _Nonnull stop) {
+            if ([controller.matchedURL isEqualToString:link.matchedURL]) {
+                targetViewController = controller;
+                *stop = YES;
+            }
+        }];
+        if (targetViewController) {
+            [navigation popToViewController:targetViewController animated:animated];
+            return;
+        }
+    }
+    
+    targetViewController = [info targetController];
     [targetViewController setMatchedURL:link.matchedURL];
     
     if (targetViewController) {
-        UIViewController *controller = [self rootViewController:link];
-        UINavigationController *navigation = nil;
-        
-        if ([info modalPresent]) {
-            
+        //模态展示
+        if (modal) {
+            UIViewController *controller = [self rootViewController:link];
             Class bgNavigation = NSClassFromString(@"BGNavigationController")?:([UINavigationController class]);
-            navigation = [[bgNavigation alloc] initWithRootViewController:targetViewController];
+            UINavigationController *navigation = [[bgNavigation alloc] initWithRootViewController:targetViewController];
             !navationBlock?:navationBlock(navigation);
             [self handleLink:link controller:targetViewController navigationController:navigation];
-            [controller presentViewController:navigation animated:[info animated] completion:nil];
-
+            [controller presentViewController:navigation animated:animated completion:nil];
         }
         else {
-            navigation = (UINavigationController *)([controller isKindOfClass:[UINavigationController class]] ?
-                                                    controller:
-                                                    controller.navigationController);
+            UINavigationController *navigation = [self rootNavigationController:link];
             !navationBlock?:navationBlock(navigation);
             [self handleLink:link controller:targetViewController navigationController:navigation];
-            [navigation pushViewController:targetViewController animated:[info animated]];
-
+            [navigation pushViewController:targetViewController animated:animated];
         }
     }
 }
