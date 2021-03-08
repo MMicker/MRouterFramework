@@ -67,20 +67,9 @@ static NSString * const DPLURLParameterPattern        = @"([^/]+)";
 #pragma mark - Named Group Helpers
 
 + (NSRegularExpression *) reqularExpressionForPattern:(NSString *) pattern {
-    static NSDictionary *regularExpressions = nil;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        
-        regularExpressions = @{
-            DPLNamedGroupComponentPattern : [NSRegularExpression regularExpressionWithPattern:DPLNamedGroupComponentPattern
-                                                                                      options:0
-                                                                                        error:nil],
-            DPLNamedGroupComponentPattern : [NSRegularExpression regularExpressionWithPattern:DPLRouteParameterPattern
-                                                                                      options:0
-                                                                                        error:nil]
-        };
-    });
-    return [regularExpressions objectForKey:pattern];
+    return [NSRegularExpression regularExpressionWithPattern:pattern
+                                                     options:0
+                                                       error:nil];
 }
 
 + (NSArray *)namedGroupTokensForString:(NSString *)str {
