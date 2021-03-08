@@ -66,10 +66,26 @@ static NSString * const DPLURLParameterPattern        = @"([^/]+)";
 
 #pragma mark - Named Group Helpers
 
++ (NSRegularExpression *) reqularExpressionForPattern:(NSString *) pattern {
+    static NSDictionary *regularExpressions = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        
+        regularExpressions = @{
+            DPLNamedGroupComponentPattern : [NSRegularExpression regularExpressionWithPattern:DPLNamedGroupComponentPattern
+                                                                                      options:0
+                                                                                        error:nil],
+            DPLNamedGroupComponentPattern : [NSRegularExpression regularExpressionWithPattern:DPLRouteParameterPattern
+                                                                                      options:0
+                                                                                        error:nil]
+        };
+    });
+    return [regularExpressions objectForKey:pattern];
+}
+
 + (NSArray *)namedGroupTokensForString:(NSString *)str {
-    NSRegularExpression *componentRegex = [NSRegularExpression regularExpressionWithPattern:DPLNamedGroupComponentPattern
-                                                                                    options:0
-                                                                                      error:nil];
+    NSRegularExpression *componentRegex = [self reqularExpressionForPattern:DPLNamedGroupComponentPattern];
+
     NSArray *matches = [componentRegex matchesInString:str
                                                options:0
                                                  range:NSMakeRange(0, str.length)];
@@ -87,9 +103,8 @@ static NSString * const DPLURLParameterPattern        = @"([^/]+)";
     NSString *modifiedStr = [str copy];
     
     NSArray *namedGroupExpressions = [self namedGroupTokensForString:str];
-    NSRegularExpression *parameterRegex = [NSRegularExpression regularExpressionWithPattern:DPLRouteParameterPattern
-                                                                                    options:0
-                                                                                      error:nil];
+    NSRegularExpression *parameterRegex = [self reqularExpressionForPattern:DPLRouteParameterPattern];
+    
     // For each of the named group expressions (including name & regex)
     for (NSString *namedExpression in namedGroupExpressions) {
         NSString *replacementExpression       = [namedExpression copy];
@@ -125,9 +140,7 @@ static NSString * const DPLURLParameterPattern        = @"([^/]+)";
     NSMutableArray *groupNames = [NSMutableArray array];
     
     NSArray *namedGroupExpressions = [self namedGroupTokensForString:str];
-    NSRegularExpression *parameterRegex = [NSRegularExpression regularExpressionWithPattern:DPLRouteParameterPattern
-                                                                                    options:0
-                                                                                      error:nil];
+    NSRegularExpression *parameterRegex = [self reqularExpressionForPattern:DPLRouteParameterPattern];
     
     for (NSString *namedExpression in namedGroupExpressions) {
         NSArray *componentMatches             = [parameterRegex matchesInString:namedExpression

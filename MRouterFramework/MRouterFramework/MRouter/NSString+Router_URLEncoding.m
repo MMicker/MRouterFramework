@@ -58,7 +58,7 @@
 	return result;
 }
 
-- (NSURL *) router_URL {
+- (NSURL *) routerURL {
     return [NSURL URLWithString:[self copy]];
 }
 
