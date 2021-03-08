@@ -17,6 +17,31 @@
 
 static char objc_default_router;
 
+@interface MRouterInfo(MATCHER)
+@property (nonatomic, strong) NSMutableDictionary *matcherDictionary;
+@end
+
+@implementation MRouterInfo(MATCHER)
+
+- (void) setMatcherDictionary:(NSMutableDictionary *)matcherDictionary {
+    objc_setAssociatedObject(self, @selector(matcherDictionary), matcherDictionary, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+- (NSMutableDictionary *) matcherDictionary {
+    NSMutableDictionary *data = objc_getAssociatedObject(self, _cmd);
+    if (!data) {
+        data = [NSMutableDictionary dictionaryWithCapacity:10];
+        self.matcherDictionary = data;
+    }
+    return data;
+}
+
+- (MRouterMatcher *) mathcerForUrl:(NSString *) url {
+    return [self.matcherDictionary valueForKey:url];
+}
+
+@end
+
 @implementation MRouterInfo (Router)
 
 - (MRouterLink *) handleURL:(NSURL *) url userInfo:(id) userInfo direct:(BOOL) direct{
@@ -24,8 +49,13 @@ static char objc_default_router;
     if (direct) {
         link  = [[MRouterLink alloc] initWithURL:url];
     } else {
+        __weak __typeof__(self) weakSelf = self;
         [self.regexUrls enumerateObjectsUsingBlock:^(NSString * obj, NSUInteger idx, BOOL * _Nonnull stop) {
-            MRouterMatcher *matcher = [MRouterMatcher matcherWithRoute:obj];
+            MRouterMatcher *matcher = [weakSelf.matcherDictionary valueForKey:obj];
+            if (!matcher) {
+                matcher = [MRouterMatcher matcherWithRoute:obj];
+                [weakSelf.matcherDictionary setValue:matcher forKey:obj];
+            }
             link = [matcher deepLinkWithURL:url];
             if (link) {
                 *stop = YES;
