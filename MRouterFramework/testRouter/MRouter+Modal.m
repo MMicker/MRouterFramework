@@ -26,7 +26,7 @@
                                           index:100
                                         ctrlCls:NSClassFromString(@"AViewController")
                                       regexUrls:@[@"http://micker.cna",@"wscn/login"]
-                                     extentions:@{@"modal":@(YES),@"needLogin":@(YES)}
+                                     extentions:@{@"modal":@(YES),@"needLogin":@(YES),@"navigation":@""}
                                      handlerCls:nil]];
     
     
@@ -52,6 +52,24 @@
     }];
     
     [self registerURLRouter:infor];
+    
+    
+    
+    
+    MRouterInfo *itunes = [MRouterInfo router:@"itunes"
+                                       index:100
+                                     ctrlCls:NULL
+                                   regexUrls:@[@"itunes.apple.com/:appCountry/:appType/:appName/:appid"]
+                                  extentions:nil
+                                 handleBlock:^BOOL(MRouterInfo *info, MRouterLink *link)
+    {
+        NSLog(@"link = %@", link.URL);
+//       [[MRouter sharedRouter] handleURL:[NSURL URLWithString:@"https://wallstreetcn.com/member/gold"] userInfo:link.userInfo];
+//       [[NSNotificationCenter defaultCenter] postNotificationName:@"MVIPSUBITEMNOTIFICATION" object:link.URL];
+       return YES;
+    }];
+    
+    [self registerURLRouter:itunes];
     
     
 

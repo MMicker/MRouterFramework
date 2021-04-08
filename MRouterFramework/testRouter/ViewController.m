@@ -142,7 +142,7 @@
     
     {
         UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-        [button setTitle:@"modalB" forState:UIControlStateNormal];
+        [button setTitle:@"itunes.apple.com" forState:UIControlStateNormal];
         [button setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
         button.frame = CGRectMake(100, 400, 100, 100);
         [button addTarget:self action:@selector(buttonAction3:) forControlEvents:UIControlEventTouchUpInside];
@@ -180,14 +180,21 @@
 }
 
 - (IBAction)buttonAction3:(id)sender {
-    [[MRouter sharedRouter] handleURL:[NSURL URLWithString:@"http://micker.cnb"] userInfo:nil];
+//    [[MRouter sharedRouter] handleURL:[NSURL URLWithString:@"http://micker.cnb"] userInfo:nil];
 //    [[MRouter sharedRouter] handleURL:[NSURL URLWithString:@"httpsaaa://192.168.0.111:8080/member/channel/gold/privilege?channel_type=gold-global&index=1"] userInfo:nil];
+    
+    NSString *url = @"https://itunes.apple.com/cn/app/ping-an-zi-zhu-kai-hu/id871659147?mt=8";
+    [[MRouter sharedRouter] handleURL:[NSURL URLWithString:url] userInfo:@{@"single":@(YES)}];
 }
 @end
 
 
 @implementation AViewController
 
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    self.view.backgroundColor = [UIColor whiteColor];
+}
 @end
 
 

@@ -39,6 +39,13 @@
     return NO;
 }
 
+- (NSString *) navigationClass {
+    if (self.extentions && [[self.extentions allKeys] containsObject:@"navigation"]) {
+        return [self.extentions objectForKey:@"navigation"];
+    }
+    return nil;
+}
+
 - (UIViewController *) targetController {
     return [[[self handlerCtrlCls] alloc] init];
 }

@@ -70,10 +70,14 @@
     if ([link.userInfo isKindOfClass: [NSDictionary class]]) {
         [data addEntriesFromDictionary:link.userInfo];
     }
+    if (info.navigationClass) {
+        [data setValue:info.navigationClass forKey:@"navigation"];
+    }
     
     BOOL animated   = [[data valueForKey:@"animated"] boolValue];
     BOOL modal      = [[data valueForKey:@"modal"] boolValue];
     BOOL single     = [[data valueForKey:@"single"] boolValue];
+    NSString *navigationClass = [data valueForKey:@"navigation"];
     
     // 单例
     if (single) {
@@ -98,11 +102,16 @@
         //模态展示
         if (modal) {
             UIViewController *controller = [self rootViewController:link];
-            Class bgNavigation = NSClassFromString(@"BGNavigationController")?:([UINavigationController class]);
+            Class bgNavigation =  NULL;
+            if (!navigationClass) {
+                bgNavigation = NSClassFromString(@"BGNavigationController")?:([UINavigationController class]);
+            } else {
+                bgNavigation = NSClassFromString(navigationClass);
+            }
             UINavigationController *navigation = [[bgNavigation alloc] initWithRootViewController:targetViewController];
             !navationBlock?:navationBlock(navigation);
             [self handleLink:link controller:targetViewController navigationController:navigation];
-            [controller presentViewController:navigation animated:animated completion:nil];
+            [controller presentViewController:navigation?:targetViewController animated:animated completion:nil];
         }
         else {
             UINavigationController *navigation = [self rootNavigationController:link];

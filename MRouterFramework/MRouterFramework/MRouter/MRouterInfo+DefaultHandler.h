@@ -18,6 +18,8 @@
 
 - (BOOL) defaultRouterValue;
 
+- (NSString *) navigationClass;
+
 - (UIViewController *) targetController;
 
 @end
