@@ -12,7 +12,8 @@
 static id<MRouterInterceptProtocol> __gRouterInterceptProtocol ;
 
 void  registerRouterInterceptProtocol(id<MRouterInterceptProtocol> item) {
-    if (item && [item respondsToSelector:@selector(interceptRouter:link:continueBlock:)]) {
+
+    if (item && [item respondsToSelector:@selector(interceptRouterInfo:link:continueBlock:)]) {
         __gRouterInterceptProtocol = item;
     }
 }
