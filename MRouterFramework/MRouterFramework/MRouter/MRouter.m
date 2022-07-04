@@ -187,6 +187,11 @@ static BOOL G_URL_RESOLVER_DEBUG = NO;
 
 - (BOOL) handleURL:(NSURL *) url userInfo:(id) userInfo useDefault:(BOOL) flag {
     [self start];
+    
+    if (!url || [url.absoluteString length] == 0) {
+        return NO;
+    }
+    
     __block MRouterLink *link = nil;
     __block MRouterInfo *routerInfo = nil;
     NSURL *resultURL = url;

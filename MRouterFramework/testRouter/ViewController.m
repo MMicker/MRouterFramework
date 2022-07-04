@@ -175,7 +175,8 @@
 
 
 - (IBAction)buttonAction2:(id)sender {
-    [[MRouter sharedRouter] handleURL:[NSURL URLWithString:@"http://micker.cna"] userInfo:@{@"single":@(YES)}];
+    [[MRouter sharedRouter] handleURL:[NSURL URLWithString:@""] userInfo:@{@"single":@(YES)}];
+//    [[MRouter sharedRouter] handleURL:[NSURL URLWithString:@"http://micker.cna"] userInfo:@{@"single":@(YES)}];
 //    [[MRouter sharedRouter] handleURL:[NSURL URLWithString:@"httpsaaa://192.168.0.111:8080/member/channel/gold/privilege?channel_type=gold-global&index=1"] userInfo:nil];
 }
 
